@@ -2,6 +2,7 @@ Hello there bee
 game intelect
 lolipop king
 torch
-up.txt%go up
+left.txt%Eat your scarf
 down.txt%go down
-left.txt%go left
+up.txt%go up
+right.txt%go right

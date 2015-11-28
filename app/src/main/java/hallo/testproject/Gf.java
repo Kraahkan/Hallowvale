@@ -39,6 +39,9 @@ public class Gf  { // game functions
         firstLine = ""; secondLine = ""; thirdLine = "";
 
         int lineNum = 0; // index for moving through file
+        for (int c = 0; c < buttons.length; c++)
+          for (int d = 0; d < buttons[c].length; d++)
+              buttons[c][d] = "";
 
 
         Scanner s = new Scanner(file);
@@ -62,7 +65,6 @@ public class Gf  { // game functions
                 if (lineNum >= 4 && lineNum <= 7) { // rooms
 
 
-
                     boolean end = false;
                     boolean readPath = true;
                     int count = 0;
@@ -74,6 +76,9 @@ public class Gf  { // game functions
 
                         // System.out.println(count);
                         // System.out.println(line.length());
+
+                        if (line.length() == 0)
+                            break;
 
                         if (line.charAt(count) == '%') {
                             readPath = false;
@@ -92,13 +97,12 @@ public class Gf  { // game functions
                         if ( count < line.length() - 1 )
                             count++;
 
-
-
                         if (end) {
 
 
                             buttons[0][lineNum - 4] = path;
                             buttons[1][lineNum - 4] = description;
+                            Log.d("path & description - ", path + " " + "description");
 
                         }
 
@@ -181,10 +185,10 @@ public class Gf  { // game functions
         System.out.println(secondLine);
         System.out.println(thirdLine);
         System.out.println(item);
-        //for (int c = 0; c < buttons[0].length; c++) {
-        //    System.out.println(buttons[0][c]);
-         //   System.out.println(buttons[1][c]);
-        //}
+        for (int c = 0; c < buttons[0].length; c++) {
+            System.out.println(buttons[0][c]);
+            System.out.println(buttons[1][c]);
+        }
 
         // System.out.println(Arrays.deepToString(roomFlags[0]));
 
