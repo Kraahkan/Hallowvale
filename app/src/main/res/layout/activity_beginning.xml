@@ -12,29 +12,23 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textView4" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:id="@+id/buttonsLayout">
+            android:id="@+id/textView4"
+            android:layout_weight="1000"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/take_item"
             android:id="@+id/take_item_button"
-            android:layout_weight="1"
+            android:layout_weight=".001"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp" />
 
@@ -43,7 +37,7 @@
             android:layout_height="wrap_content"
             android:text="@string/left"
             android:id="@+id/left_button"
-            android:layout_weight="1"
+            android:layout_weight=".001"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp" />
 
@@ -52,7 +46,7 @@
             android:layout_height="wrap_content"
             android:text="@string/up"
             android:id="@+id/button3"
-            android:layout_weight="1"
+            android:layout_weight=".001"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp" />
 
@@ -61,7 +55,7 @@
             android:layout_height="wrap_content"
             android:text="@string/down"
             android:id="@+id/button7"
-            android:layout_weight="1"
+            android:layout_weight=".001"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp" />
 
@@ -70,7 +64,7 @@
             android:layout_height="wrap_content"
             android:text="@string/right"
             android:id="@+id/button8"
-            android:layout_weight="1"
+            android:layout_weight=".001"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp" />
     </LinearLayout>

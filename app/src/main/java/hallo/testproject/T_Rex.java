@@ -20,7 +20,7 @@ public class T_Rex extends AppCompatActivity { // create a game
     Spinner editRace;
 
     private String[] races;
-//GIT YOU SUCJ BRO
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

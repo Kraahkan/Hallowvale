@@ -2,7 +2,5 @@ You wake up in a blizzard, your head pounding.  You look around in the darkness,
 The area surrounding you is a snowed in forest.  The path to the north and south is overgrown with strange vines, and a treeline to the west is the only way out.
 You feel bla.
 torch
-treeline.txt%Head towards the dark trees
-forestedge.txt%Make for the forest
-spire.txt%Head towards the spire
+
 start.txt%Go back to the beginning
