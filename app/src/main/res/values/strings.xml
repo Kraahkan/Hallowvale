@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Hallowvale2</string>
+    <string name="paliosaurus">Play</string>
+    <string name="dnd">Settings</string>
+    <string name="barneyfelloffatreeanddied">Quit</string>
+    <string name="alackofbananasplitisalargecontributertofacialreconstruction">Enter your Name: </string>
+    <string name="lolipop">Enter your Race:</string>
+    <string name="sacrednuts">Enter your Destination: </string>
+    <string name="theamericanspirit">Quit</string>
+    <string name="platoidBeasters">Enter</string>
+
+    <string-array name="countries_list">
+        <item>Afghanistan</item>
+        <item>Albania</item>
+        <item>Australia</item>
+        <item>Bangladesh</item>
+        <item>Bhutan</item>
+        <item>England</item>
+        <item>Finland</item>
+        <item>India</item>
+        <item>Saudi Arabia</item>
+        <item>Nepal</item>
+    </string-array>
+    <string name="title_activity_beginning">beginning</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="audio">audio</string>
+    <string name="action_settings">Settings</string>
+    <string name="audio2">audio</string>
+    <string name="logocontents">logocontents</string>
+</resources>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainMenu"
+    android:orientation="vertical"
+    android:background="@drawable/background">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/logo"
+            android:background="@drawable/logo"
+            android:contentDescription="@string/logocontents" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="50dp"
+        android:weightSum="1">
+
+        <Button
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:text="@string/paliosaurus"
+            android:id="@+id/playButton"
+            android:layout_gravity="center|bottom"
+            android:layout_marginTop="30dp"
+            android:layout_weight="0.12"
+            android:nestedScrollingEnabled="false"
+            android:onClick="locustMauling" />
+
+        <Button
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:text="@string/dnd"
+            android:id="@+id/settingsButton"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_weight="0.12" />
+
+        <Button
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:text="@string/barneyfelloffatreeanddied"
+            android:id="@+id/quitButton"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_weight="0.12" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:id="@+id/muteButton"
+        android:background="@drawable/audio"
+        android:layout_gravity="right"
+        android:contentDescription="@string/audio2" />
+</LinearLayout>
