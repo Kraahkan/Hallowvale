@@ -22,7 +22,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     public Context c;
     TextView texter;
-    Button left, up, down, right;
+    Button left, up, down, right, takeItem;
 
     Button buttons[];
 
@@ -40,29 +40,35 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         preferenceEditor = preferenceSettings.edit();
         preferenceSettings.getAll();
 
+        defaultPrefs(); // Set all shared preferences to default
+
         texter = (TextView)findViewById(R.id.textView4);
         left = (Button)findViewById(R.id.left_button);
         up = (Button)findViewById(R.id.up_button);
         down = (Button)findViewById(R.id.down_button);
         right = (Button)findViewById(R.id.right_button);
+        takeItem = (Button)findViewById(R.id.take_item_button);
 
         left.setOnClickListener(this);
         up.setOnClickListener(this);
         down.setOnClickListener(this);
         right.setOnClickListener(this);
+        takeItem.setOnClickListener(this);
 
         Button buttons2[] = {left, up, down, right};
         buttons = buttons2;
-
 
         c = beginning.this; // creates a context/reference
         InputStream testRoom = getResources().openRawResource(R.raw.room1);
         Gf.createRoom(testRoom);
 
-        Gf.updateFlags();
 
-        Gf.checkInfo();
+
+
         updateButtons();
+
+        Gf.updateFlags();
+        Gf.checkInfo();
 
 
 
@@ -70,7 +76,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v) { // generic on click for all buttons
 
 
         int resId;
@@ -120,7 +126,9 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 updateButtons();
                 break;
 
-
+            case R.id.take_item_button:
+                takeItem();
+                break;
 
             default:
                 break;
@@ -130,8 +138,15 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     }
 
-    public void updateButtons() {
-        for (int c = 0; c < Gf.buttons[0].length; c++)
+    public void updateButtons() { // refreshes buttons after room is created
+
+        takeItem.setVisibility(View.GONE);
+
+        for (int c = 0; c < Gf.buttons[0].length; c++) // removes all
+                buttons[c].setVisibility(View.GONE);
+
+
+        for (int c = 0; c < Gf.buttons[0].length; c++) // proper button txt
             try {
                 buttons[c].setText(Gf.buttons[1][c]);
             }
@@ -139,13 +154,34 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 Log.d("error","You got a null point fool");
 
             }
-        for (int c = 0; c < Gf.buttons[0].length; c++)
-            if (buttons[c].getText() == "")
-                buttons[c].setVisibility(View.GONE);
+
+        for (int c = 0; c < Gf.buttons[0].length; c++) // adds buttons needed
+            if (buttons[c].getText() != "")
+                buttons[c].setVisibility(View.VISIBLE);
+
+
+        if (Gf.item.length() > 0) {
+            takeItem.setVisibility(View.VISIBLE);
+            takeItem.setText("Take " + Gf.item);
+        }
+
 
         texter.setText(Gf.firstLine + "\n" + Gf.secondLine + "\n" + Gf.thirdLine);
 
 
+    }
+
+    public void takeItem(){ // when you take an item
+
+        preferenceEditor.putBoolean(Gf.item, true);
+
+    }
+
+    public void defaultPrefs(){ // populates buttons
+
+        preferenceEditor.putBoolean("unlitTorch", false);
+        preferenceEditor.putBoolean("flint", false);
+        preferenceEditor.putBoolean("litTorch", false);
 
     }
 

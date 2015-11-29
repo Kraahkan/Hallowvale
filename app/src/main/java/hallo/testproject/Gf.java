@@ -5,6 +5,7 @@ import android.util.Log;
 import java.io.File;
 import java.io.InputStream;
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -12,14 +13,14 @@ public class Gf  { // game functions
 
     static String currentPath = "room1";
 
-    static String firstLine = ""; // first description, first and third are only displayed on visiting the room the first time
-    static String secondLine = ""; // description, displayed everytime
-    static String thirdLine = "";
+    static String firstLine = ""; // first direction
+    static String secondLine = ""; // second direction
+    static String thirdLine = ""; // flavor first time txt
     static String[] strings = {firstLine, secondLine, thirdLine};
     static String line_read = null;
     static beginning game = new beginning();
 
-    static String[][] roomFlags;  // dynamically generated 2d array for flagging if rooms have been visited00
+    static String[][] roomFlags = new String[3][200];  // first column is paths, second is direction, third is visited 1st time
 
 
     static String buttons[][] = { // button info for next rooms
@@ -37,12 +38,13 @@ public class Gf  { // game functions
     public static void createRoom(InputStream file) { // creates a room from a txt file
 
         firstLine = ""; secondLine = ""; thirdLine = "";
+        item = "";
 
-        int lineNum = 0; // index for moving through file
         for (int c = 0; c < buttons.length; c++)
           for (int d = 0; d < buttons[c].length; d++)
               buttons[c][d] = "";
 
+        int lineNum = 0; // index for moving through file
 
         Scanner s = new Scanner(file);
 
@@ -108,8 +110,6 @@ public class Gf  { // game functions
 
                     }
 
-
-
                 }
 
 
@@ -133,49 +133,11 @@ public class Gf  { // game functions
 
         Field[] fields=R.raw.class.getFields();
         for(int count=0; count < fields.length; count++){
-            Log.i("Raw Asset: ", fields[count].getName());
-        }
-        //try {
-        //     final File folder = new File("C:/Users/helmiligi/Desktop/gameFunctions");
-     //   MainMenu myActivity = new MainMenu();
-      //  Context context = myActivity.context;
-      //  int path = context.getResources().getIdentifier("raw/blastoise","raw", context.getPackageName());
-
-
-
-
-        //    Log.d("DEBUG", "folder -> path" + folder.toString());
-         //   listFilesForFolder(folder);
-        //} catch (Exception e) {
-  //          e.printStackTrace();
-
-//        }
-
-
-    }
-
-
-
-
-    public static void listFilesForFolder(File folder) {
-        Log.d("DEBUG", "GF -> listFilesForFolder");
-
-        for (File fileEntry : folder.listFiles()) {
-            Log.d("DEBUG", "fileEntry");
-            if (fileEntry.isDirectory()) {
-                Log.d("DEBUG", "isDirectory");
-                listFilesForFolder(fileEntry);
-            } else {
-                Log.d("DEBUG", "else");
-                System.out.println(fileEntry.getName());
-            }
+            roomFlags[0][count] = fields[count].getName();
+            roomFlags[1][count] = "0";
+            roomFlags[2][count] = "0";
         }
     }
-
-    //roomFlags = new String[2][n];
-    //roomFlags[0] = paths;
-
-
 
 
 
@@ -190,7 +152,7 @@ public class Gf  { // game functions
             System.out.println(buttons[1][c]);
         }
 
-        // System.out.println(Arrays.deepToString(roomFlags[0]));
+        Log.d("yo",Arrays.deepToString(roomFlags[0]));
 
     }
 
