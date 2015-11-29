@@ -1,7 +1,7 @@
-A small marsh lies surrounded by dead animal corpses. You notice a pickaxe lodged inside one the dead cows.
-A small marsh lies surrounded by dead animal corpses. You notice a pickaxe lodged inside one the dead cows.
+A small marsh lies surrounded by dead animal corpses.
+A small marsh lies surrounded by dead animal corpses.
 This place smells of rotting flesh. You throw up last nights dinner.  
-pickaxe
 
-
+spire%Enter ruins
+valley%trek into darkness
 start%Go back

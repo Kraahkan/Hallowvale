@@ -24,7 +24,8 @@
         </activity>
         <activity
             android:name=".beginning"
-            android:label="@string/title_activity_beginning" >
+            android:label="@string/title_activity_beginning"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

@@ -1,0 +1,6 @@
+You find yourself in a library. Thousands of books surround you all in a foreign language. There is a window that has been left open and snow is pilling up on the floor.
+You find yourself in a library. Thousands of books surround you all in a foreign language. There is a window that has been left open and snow is pilling up on the floor.
+This library is very clean. Finding a book in english could be very helpful.
+book
+spirewindow%Look out window
+spire%Go back

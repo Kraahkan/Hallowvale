@@ -1,0 +1,7 @@
+A giant glooming spire stares down at you. There is a small door at the front that seems to be open, and a narrow path around the building.
+A giant glooming spire stares down at you. There is a small door at the front that seems to be open, and a narrow path around the building.
+You feel a very evil pressence lurking in these walls.
+
+spirelibrary%Enter spire
+spirepit%Follow path
+marsh%Go back

@@ -4,3 +4,4 @@ You wake up to a loud human scream. You pull yourself up and try to gain focus o
 
 mountain%March to the mountain
 forest%Make for the forest
+marsh%Sally forth to the marsh

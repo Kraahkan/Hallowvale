@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.io.File;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.Objects;
 
 import android.view.View.OnClickListener;
 
@@ -184,15 +185,20 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     public void setText() {
 
+        texter.setText("");
+
         for (int c = 0; c < Gf.roomFlags[0].length; c++) {
             if ( Gf.roomFlags[0][c] != null) {
+                Log.d("path",Gf.roomFlags[0][c]);
+                Log.d("current",Gf.currentPath);
             }
-            Log.d("path","searched path" + Gf.roomFlags[0][c] + "currennt path!" + Gf.currentPath);
-            if (Gf.roomFlags[0][c] == Gf.currentPath ) {
+
+
+            if (Objects.equals(Gf.roomFlags[0][c], Gf.currentPath)) {
                 Log.d("bla","INTO LOOP");
 
                 if (Integer.parseInt(Gf.roomFlags[2][c]) == 0) { // if first time
-                    texter.setText(Gf.thirdLine);
+                    texter.append(Gf.thirdLine);
                     Gf.roomFlags[2][c] = "1";
                 }
                 if (Integer.parseInt(Gf.roomFlags[1][c]) == 0) { // if odd time
