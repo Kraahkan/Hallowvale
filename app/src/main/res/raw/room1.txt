@@ -1,8 +1,0 @@
-You wake up in a blizzard, your head pounding.  You look around in the darkness, but can't see your friend.  You hear a scream from the treeline to your right.
-The area surrounding you is a snowed in forest.  The path to the north and south is overgrown with strange vines, and a treeline to the west is the only way out.
-You feel bla.
-
-room2%Go back to the beginning
-forestedge.txt%Make for the forest
-spire.txt%Head towards the spire
-start.txt%Go back to the beginning

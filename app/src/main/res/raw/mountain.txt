@@ -2,6 +2,6 @@ The icy path trails down into a cobblestone bluff.  Steep, rocky cliffs surround
 Surveying the area around you, you see no trace of life.
 In a snowbank to your left, you can see a small cave opening.  The path continues up the bluff.  
 
-mineshaft%Enter the cave
+cave%Enter the cave
 camp&Climb the Cliff Face
-icyPath%Go back down the Icy Path
+start%Go back down the Icy Path

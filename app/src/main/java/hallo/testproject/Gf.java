@@ -25,7 +25,8 @@ public class Gf  { // game functions
 
     static String buttons[][] = { // button info for next rooms
             {"first.txt","second.txt","third.txt","fourth.txt"}, // file paths
-            {"The first option","The second option","The third option","The fourth option"} // button txt
+            {"The first option","The second option","The third option","The fourth option"}, // button txt
+            {"","","",""} // items needed
     };
 
 
@@ -68,16 +69,14 @@ public class Gf  { // game functions
 
 
                     boolean end = false;
-                    boolean readPath = true;
+                    boolean readPath = true; // path is read first, then description, then item
+                    boolean readItem = false;
                     int count = 0;
 
-                    String path = "", description = "";
+                    String path = "", description = "", itemNeeded = "";
 
 
                     while ( end == false ) {
-
-                        // System.out.println(count);
-                        // System.out.println(line.length());
 
                         if (line.length() == 0)
                             break;
@@ -86,14 +85,22 @@ public class Gf  { // game functions
                             readPath = false;
                         }
 
+                        if (line.charAt(count) == '&') {
+                            readItem = true;
+                        }
+
                         if (readPath)
                             path += line.charAt(count);
 
                         else
+
                         if (line.charAt(count) != '%')
                             description += line.charAt(count);
 
-                        if ( count == line.length() - 1 )
+                        if (readItem)
+                            itemNeeded += line.charAt(count);
+
+                            if ( count == line.length() - 1 )
                             end = true;
 
                         if ( count < line.length() - 1 )
@@ -104,6 +111,7 @@ public class Gf  { // game functions
 
                             buttons[0][lineNum - 4] = path;
                             buttons[1][lineNum - 4] = description;
+                            buttons[2][lineNum - 4] = itemNeeded;
                             Log.d("path & description - ", path + " " + "description");
 
                         }

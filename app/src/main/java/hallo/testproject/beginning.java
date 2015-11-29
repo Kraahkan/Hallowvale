@@ -59,7 +59,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         buttons = buttons2;
 
         c = beginning.this; // creates a context/reference
-        InputStream testRoom = getResources().openRawResource(R.raw.room1);
+        InputStream testRoom = getResources().openRawResource(R.raw.rockypath);
         Gf.createRoom(testRoom);
 
 
@@ -148,6 +148,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         for (int c = 0; c < Gf.buttons[0].length; c++) // proper button txt
             try {
+                //
                 buttons[c].setText(Gf.buttons[1][c]);
             }
             catch (NullPointerException n) {

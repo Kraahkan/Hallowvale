@@ -1,5 +1,8 @@
-The area surrounding you is a snowed in forest.  The path to the north and south is overgrown with strange vines, and a treeline to the west is the only way out.
-The area surrounding you is a snowed in forest.  The path to the north and south is overgrown with strange vines, and a treeline to the west is the only way out.
-You feel bla.
-torch
-start.txt%Go back to the beginning
+There apears to be four distinct areas surrounding you. A spire, a marsh, a forest, and a mountain.
+There apears to be four distinct areas surrounding you. A spire, a marsh, a forest, and a mountain.
+You wake up to a loud human scream. You pull yourself up and try to gain focus on your surroundings. You don't see anyone around.
+
+mountain%March to the mountain
+forest%Make for the forest
+spire%Head towards the spire
+marsh%Go back to the beginning
