@@ -3,4 +3,4 @@ There is a giant pit with no bottom vissible. You can hear feint sounds of a cow
 You walk around the spire and almost fall into a rift. As dangerous as it looks, you may be able to climb down.
 
 pit%Climb tree
-spire%Go backa
+spire%Go back
