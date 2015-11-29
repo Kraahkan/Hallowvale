@@ -36,15 +36,15 @@ public class T_Rex extends AppCompatActivity { // create a game
         editDestination = (EditText)findViewById(R.id.editText2);
         editRace = (Spinner)findViewById(R.id.spinner);
 
-        this.races = new String[] {"Bungalo",
-        "Centipede",
-        "Minotaur",
-        "Bird",
-        "Inbred",
-        "Chimera",
-        "Blastoise",
-        "Dead Flie",
-        "Zombie"
+        this.races = new String[] {"Human",
+        "Elf",
+        "Dwarf",
+        "Orc",
+        "Halfling",
+        "Tiefling",
+        "Warforged",
+        "Dragonborn",
+        "Platoid"
         };
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -59,6 +59,7 @@ public class T_Rex extends AppCompatActivity { // create a game
         preferenceEditor.putString("name", editName.getText().toString());
         preferenceEditor.putString("race", editRace.getSelectedItem().toString());
         preferenceEditor.putString("destination", editDestination.getText().toString());
+
 
         preferenceEditor.commit();
 

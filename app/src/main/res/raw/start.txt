@@ -4,5 +4,3 @@ You wake up to a loud human scream. You pull yourself up and try to gain focus o
 
 mountain%March to the mountain
 forest%Make for the forest
-spire%Head towards the spire
-marsh%Go back to the beginning

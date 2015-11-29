@@ -2,6 +2,6 @@ A small marsh lies surrounded by dead animal corpses. You notice a pickaxe lodge
 A small marsh lies surrounded by dead animal corpses. You notice a pickaxe lodged inside one the dead cows.
 This place smells of rotting flesh. You throw up last nights dinner.  
 pickaxe
-water%Swin in the marsh
-tree%Climb the tree
+
+
 start%Go back

@@ -23,6 +23,8 @@ public class Gf  { // game functions
     static String[][] roomFlags = new String[3][200];  // first column is paths, second is direction, third is visited 1st time
 
 
+
+
     static String buttons[][] = { // button info for next rooms
             {"first.txt","second.txt","third.txt","fourth.txt"}, // file paths
             {"The first option","The second option","The third option","The fourth option"}, // button txt
@@ -36,7 +38,9 @@ public class Gf  { // game functions
     /// END OF VARS
 
 
-    public static void createRoom(InputStream file) { // creates a room from a txt file
+    public static void createRoom(InputStream file, String name) { // creates a room from a txt file
+
+        currentPath = name;
 
         firstLine = ""; secondLine = ""; thirdLine = "";
         item = "";
