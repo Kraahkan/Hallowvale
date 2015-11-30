@@ -66,6 +66,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         InputStream testRoom = getResources().openRawResource(R.raw.start);
 
         Gf.createRoom(testRoom, "start");
+        initialItemCheck();
         checkHaveItem(Gf.buttons[2][0], 1);
         updateButtons();
 
@@ -93,8 +94,8 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 Log.d("Room",String.valueOf(resId));
                 Gf.createRoom(rooms, name);
                 updateButtons();
-                if (Gf.buttons[2][0] != "" )
-                    checkHaveItem(Gf.buttons[2][0], 0);
+                //if (!Objects.equals(Gf.buttons[2][0], ""))
+                //    checkHaveItem(Gf.buttons[2][0], 0);
                 break;
 
             case R.id.up_button:
@@ -104,8 +105,8 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 Log.d("Room",String.valueOf(resId));
                 Gf.createRoom(rooms, name );
                 updateButtons();
-                if (Gf.buttons[2][1] != "" )
-                    checkHaveItem(Gf.buttons[2][1], 1);
+                //if (!Objects.equals(Gf.buttons[2][1], ""))
+                //    checkHaveItem(Gf.buttons[2][1], 1);
                 break;
 
 
@@ -116,8 +117,8 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 Log.d("Room",String.valueOf(resId));
                 Gf.createRoom(rooms, name );
                 updateButtons();
-                if (Gf.buttons[2][2] != "" )
-                    checkHaveItem(Gf.buttons[2][2], 2);
+                //if (!Objects.equals(Gf.buttons[2][2], ""))
+                //    checkHaveItem(Gf.buttons[2][2], 2);
                 break;
 
 
@@ -128,8 +129,8 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 Log.d("Room", String.valueOf(resId));
                 Gf.createRoom(rooms, name);
                 updateButtons();
-                if (Gf.buttons[2][3] != "" )
-                    checkHaveItem(Gf.buttons[2][3], 3);
+                //if (!Objects.equals(Gf.buttons[2][3], ""))
+                //    checkHaveItem(Gf.buttons[2][3], 3);
                 break;
 
             case R.id.take_item_button:
@@ -144,6 +145,8 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         }
 
+        initialItemCheck();
+
     }
 
     public void checkHaveItem(String item, int i) { // item & index of button
@@ -151,19 +154,31 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         if (preferenceSettings.getBoolean(item, false) == false) {
             buttons[i].setAlpha(.5f);
             buttons[i].setClickable(false);
-        }
-        else {
+        } else {
             buttons[i].setAlpha(1f);
             buttons[i].setClickable(true);
         }
 
+    }
 
+    public void initialItemCheck(){
 
-
-
-
+        if (preferenceSettings.getBoolean(Gf.buttons[2][0], false) == false) {
+            Log.d("ItemFalse", Gf.buttons[2][0]);
+            buttons[0].setAlpha(.5f);
+            buttons[0].setClickable(false);
+        } else {
+            Log.d("ItemTrue", Gf.buttons[2][0]);
+            buttons[0].setAlpha(1f);
+            buttons[0].setClickable(true);
+        }
 
     }
+
+
+
+
+
 
     public void updateButtons() { // refreshes buttons after room is created
 
@@ -233,23 +248,23 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
 
 
-
-
-
-
     }
 
     public void takeItem(){ // when you take an item
-
+        Log.d("takeitem",Gf.item);
         preferenceEditor.putBoolean(Gf.item, true);
+        preferenceEditor.commit(); //Always commit
+        Log.d("takeitem", String.valueOf((preferenceSettings.getBoolean(Gf.item, false))));
 
     }
 
     public void defaultPrefs(){ // populates buttons
 
-        preferenceEditor.putBoolean("unlitTorch", false);
+        preferenceEditor.putBoolean("unlittorch", false);
         preferenceEditor.putBoolean("flint", false);
-        preferenceEditor.putBoolean("litTorch", false);
+        preferenceEditor.putBoolean("littorch", false);
+
+        preferenceEditor.commit();// Always commit
 
     }
 

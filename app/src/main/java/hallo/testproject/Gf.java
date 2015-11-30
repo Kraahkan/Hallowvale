@@ -101,7 +101,7 @@ public class Gf  { // game functions
                         if (line.charAt(count) != '%' && !readItem )
                             description += line.charAt(count);
 
-                        if (readItem)
+                        if (readItem && line.charAt(count) != '&')
                             itemNeeded += line.charAt(count);
 
                             if ( count == line.length() - 1 )
@@ -121,6 +121,8 @@ public class Gf  { // game functions
                         }
 
                     }
+
+
 
                 }
 
