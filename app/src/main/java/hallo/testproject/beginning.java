@@ -8,6 +8,8 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -26,8 +28,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     Button buttons[];
 
-    InputStream rooms;
-
+    InputStream rooms; // for reading rooms
 
 
     @Override
@@ -40,7 +41,9 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         preferenceEditor = preferenceSettings.edit();
         preferenceSettings.getAll();
 
-        defaultPrefs(); // Set all shared preferences to default
+        defaultPrefs(); // Set all shared preferences to default, including items
+
+        // ----------------------------------------------------
 
         texter = (TextView)findViewById(R.id.textView4);
         texter.setMovementMethod(new ScrollingMovementMethod()); // scrolled txtview
@@ -59,27 +62,21 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         Button buttons2[] = {left, up, down, right};
         buttons = buttons2;
 
-        Gf.updateFlags();
-        //Gf.checkInfo();
-        // = beginning.this; // creates a context/reference
+        // ----------------------------------------------------
 
-        InputStream testRoom = getResources().openRawResource(R.raw.start);
+        Gf.updateFlags(); // populates with txt file paths and sets flags all to 0
 
+        InputStream testRoom = getResources().openRawResource(R.raw.start); // first room
         Gf.createRoom(testRoom, "start");
-        initialItemCheck();
-        checkHaveItem(Gf.buttons[2][0], 1);
+
+        initialItemCheck(); // gets called everytime there is a click
+
         updateButtons();
-
-
-
-
-
 
     }
 
     @Override
     public void onClick(View v) { // generic on click for all buttons
-
 
         int resId;
 
@@ -95,7 +92,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 Gf.createRoom(rooms, name);
                 updateButtons();
                 //if (!Objects.equals(Gf.buttons[2][0], ""))
-                 //   checkHaveItem(Gf.buttons[2][0], 0);
+                //   checkHaveItem(Gf.buttons[2][0], 0);
                 break;
 
             case R.id.up_button:
@@ -106,7 +103,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 Gf.createRoom(rooms, name );
                 updateButtons();
                 //if (!Objects.equals(Gf.buttons[2][1], ""))
-                 //  checkHaveItem(Gf.buttons[2][1], 1);
+                //  checkHaveItem(Gf.buttons[2][1], 1);
                 break;
 
 
@@ -118,7 +115,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 Gf.createRoom(rooms, name );
                 updateButtons();
                 //if (!Objects.equals(Gf.buttons[2][2], ""))
-                 //   checkHaveItem(Gf.buttons[2][2], 2);
+                //   checkHaveItem(Gf.buttons[2][2], 2);
                 break;
 
 
@@ -130,7 +127,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 Gf.createRoom(rooms, name);
                 updateButtons();
                 //if (!Objects.equals(Gf.buttons[2][3], ""))
-                 //   checkHaveItem(Gf.buttons[2][3], 3);
+                //   checkHaveItem(Gf.buttons[2][3], 3);
                 break;
 
             case R.id.take_item_button:
@@ -148,83 +145,38 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     }
 
-    public void checkHaveItem(String item, int i) { // item & index of button
 
-        if (preferenceSettings.getBoolean(item, false) == false) {
-            buttons[i].setAlpha(.5f);
-            buttons[i].setClickable(false);
-        } else {
-            buttons[i].setAlpha(1f);
-            buttons[i].setClickable(true);
-        }
+    public void initialItemCheck() { // checks if needs item
 
-    }
-
-    public void initialItemCheck(){
-
-            buttons[0].setAlpha(1f);
-            buttons[0].setClickable(true);
-            buttons[1].setAlpha(1f);
-            buttons[1].setClickable(true);
-            buttons[2].setAlpha(1f);
-            buttons[2].setClickable(true);
-            buttons[3].setAlpha(1f);
-            buttons[3].setClickable(true);
+        buttons[0].setAlpha(1f);
+        buttons[0].setClickable(true);
+        buttons[1].setAlpha(1f);
+        buttons[1].setClickable(true);
+        buttons[2].setAlpha(1f);
+        buttons[2].setClickable(true);
+        buttons[3].setAlpha(1f);
+        buttons[3].setClickable(true);
 
 
-        if (!Objects.equals(Gf.buttons[2][0], "")) {
-            if (preferenceSettings.getBoolean(Gf.buttons[2][0], false) == false) {
-                Log.d("ItemFalse", Gf.buttons[2][0]);
-                buttons[0].setAlpha(.5f);
-                buttons[0].setClickable(false);
-            } else {
-                Log.d("ItemTrue", Gf.buttons[2][0]);
-                buttons[0].setAlpha(1f);
-                buttons[0].setClickable(true);
+
+        for (int c = 0; c < 4; c++) {
+
+            if (!Objects.equals(Gf.buttons[2][c], "")) {
+                if (preferenceSettings.getBoolean(Gf.buttons[2][c], false) == false) {
+                    Log.d("ItemFalse", Gf.buttons[2][0]);
+                    buttons[c].setAlpha(.5f);
+                    buttons[c].setClickable(false);
+                } else {
+                    Log.d("ItemTrue", Gf.buttons[2][0]);
+                    buttons[c].setAlpha(1f);
+                    buttons[c].setClickable(true);
+                }
             }
         }
-
-        if (!Objects.equals(Gf.buttons[2][1], "")) {
-            if (preferenceSettings.getBoolean(Gf.buttons[2][1], false) == false) {
-                Log.d("ItemFalse", Gf.buttons[2][0]);
-                buttons[1].setAlpha(.5f);
-                buttons[1].setClickable(false);
-            } else {
-                Log.d("ItemTrue", Gf.buttons[2][0]);
-                buttons[1].setAlpha(1f);
-                buttons[1].setClickable(true);
-            }
-        }
-
-        if (!Objects.equals(Gf.buttons[2][2], "")) {
-            if (preferenceSettings.getBoolean(Gf.buttons[2][2], false) == false) {
-                Log.d("ItemFalse", Gf.buttons[2][0]);
-                buttons[2].setAlpha(.5f);
-                buttons[2].setClickable(false);
-            } else {
-                Log.d("ItemTrue", Gf.buttons[2][0]);
-                buttons[2].setAlpha(1f);
-                buttons[2].setClickable(true);
-            }
-        }
-
-
-        if (!Objects.equals(Gf.buttons[2][3], "")) {
-            if (preferenceSettings.getBoolean(Gf.buttons[2][3], false) == false) {
-                Log.d("ItemFalse", Gf.buttons[2][0]);
-                buttons[3].setAlpha(.5f);
-                buttons[3].setClickable(false);
-            } else {
-                Log.d("ItemTrue", Gf.buttons[2][0]);
-                buttons[3].setAlpha(1f);
-                buttons[3].setClickable(true);
-            }
-        }
-
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() { // no bac
     }
 
 
@@ -234,7 +186,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         takeItem.setVisibility(View.GONE);
 
         for (int c = 0; c < Gf.buttons[0].length; c++) // removes all
-                buttons[c].setVisibility(View.GONE);
+            buttons[c].setVisibility(View.GONE);
 
 
         for (int c = 0; c < Gf.buttons[0].length; c++) { // proper button txt
@@ -263,8 +215,6 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         setText();
 
-
-
     }
 
     public void setText() {
@@ -272,14 +222,14 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         texter.setText("");
 
         for (int c = 0; c < Gf.roomFlags[0].length; c++) {
-            if ( Gf.roomFlags[0][c] != null) {
-                Log.d("path",Gf.roomFlags[0][c]);
-                Log.d("current",Gf.currentPath);
+            if (Gf.roomFlags[0][c] != null) {
+                Log.d("path", Gf.roomFlags[0][c]);
+                Log.d("current", Gf.currentPath);
             }
 
 
             if (Objects.equals(Gf.roomFlags[0][c], Gf.currentPath)) { // find current room in array
-                                                                // checks flags
+                // checks flags
 
                 if (Integer.parseInt(Gf.roomFlags[2][c]) == 0) { // if first time
                     texter.append(Gf.thirdLine + "\n\n");
@@ -288,34 +238,29 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 if (Integer.parseInt(Gf.roomFlags[1][c]) == 0) { // if odd time
                     texter.append(Gf.firstLine);
                     Gf.roomFlags[1][c] = "1";
-                }
-                else { //(Integer.parseInt(Gf.roomFlags[1][c]) == 1) // if even time
+                } else { //(Integer.parseInt(Gf.roomFlags[1][c]) == 1) // if even time
                     texter.append(Gf.secondLine);
                     Gf.roomFlags[1][c] = "0";
                 }
             }
 
-            }
-
-
-
+        }
     }
+
+
 
     public void takeItem(){ // when you take an item
-        Log.d("takeitem",Gf.item);
         preferenceEditor.putBoolean(Gf.item, true);
         preferenceEditor.commit(); //Always commit
-        Log.d("takeitem", String.valueOf((preferenceSettings.getBoolean(Gf.item, false))));
 
     }
 
-    public void defaultPrefs(){ // populates buttons
+    public void defaultPrefs(){ // default items
 
         preferenceEditor.putBoolean("unlittorch", false);
         preferenceEditor.putBoolean("flint", false);
         preferenceEditor.putBoolean("littorch", false);
         preferenceEditor.putBoolean("book", false);
-
         preferenceEditor.commit();// Always commit
 
     }
