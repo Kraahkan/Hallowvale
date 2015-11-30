@@ -2,7 +2,6 @@ package hallo.testproject;
 
 import android.util.Log;
 
-import java.io.File;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -91,6 +90,7 @@ public class Gf  { // game functions
 
                         if (line.charAt(count) == '&') {
                             readItem = true;
+
                         }
 
                         if (readPath)
@@ -98,7 +98,7 @@ public class Gf  { // game functions
 
                         else
 
-                        if (line.charAt(count) != '%')
+                        if (line.charAt(count) != '%' && !readItem )
                             description += line.charAt(count);
 
                         if (readItem)

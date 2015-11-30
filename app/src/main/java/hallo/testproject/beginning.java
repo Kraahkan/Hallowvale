@@ -2,21 +2,17 @@ package hallo.testproject;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.io.File;
 import java.io.InputStream;
-import java.util.Arrays;
 import java.util.Objects;
-
-import android.view.View.OnClickListener;
 
 public class beginning extends AppCompatActivity implements OnClickListener { // This is the main game interface
 
@@ -70,6 +66,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         InputStream testRoom = getResources().openRawResource(R.raw.start);
 
         Gf.createRoom(testRoom, "start");
+        checkHaveItem(Gf.buttons[2][0], 1);
         updateButtons();
 
 
@@ -95,9 +92,9 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 rooms = getResources().openRawResource(resId);
                 Log.d("Room",String.valueOf(resId));
                 Gf.createRoom(rooms, name);
-               // Gf.updateFlags();
-               // Gf.checkInfo();
                 updateButtons();
+                if (Gf.buttons[2][0] != "" )
+                    checkHaveItem(Gf.buttons[2][0], 0);
                 break;
 
             case R.id.up_button:
@@ -106,9 +103,9 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 rooms = getResources().openRawResource(resId);
                 Log.d("Room",String.valueOf(resId));
                 Gf.createRoom(rooms, name );
-                //Gf.updateFlags();
-                //Gf.checkInfo();
                 updateButtons();
+                if (Gf.buttons[2][1] != "" )
+                    checkHaveItem(Gf.buttons[2][1], 1);
                 break;
 
 
@@ -118,9 +115,9 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 rooms = getResources().openRawResource(resId);
                 Log.d("Room",String.valueOf(resId));
                 Gf.createRoom(rooms, name );
-                //Gf.updateFlags();
-               // Gf.checkInfo();
                 updateButtons();
+                if (Gf.buttons[2][2] != "" )
+                    checkHaveItem(Gf.buttons[2][2], 2);
                 break;
 
 
@@ -128,15 +125,17 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 name = Gf.buttons[0][3];
                 resId = getResources().getIdentifier("raw/" + name, null, this.getPackageName());
                 rooms = getResources().openRawResource(resId);
-                Log.d("Room",String.valueOf(resId));
+                Log.d("Room", String.valueOf(resId));
                 Gf.createRoom(rooms, name);
-               // Gf.updateFlags();
-                //Gf.checkInfo();
                 updateButtons();
+                if (Gf.buttons[2][3] != "" )
+                    checkHaveItem(Gf.buttons[2][3], 3);
                 break;
 
             case R.id.take_item_button:
                 takeItem();
+                takeItem.setAlpha(.5f);
+                takeItem.setClickable(false);
                 break;
 
             default:
@@ -144,6 +143,25 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
 
         }
+
+    }
+
+    public void checkHaveItem(String item, int i) { // item & index of button
+
+        if (preferenceSettings.getBoolean(item, false) == false) {
+            buttons[i].setAlpha(.5f);
+            buttons[i].setClickable(false);
+        }
+        else {
+            buttons[i].setAlpha(1f);
+            buttons[i].setClickable(true);
+        }
+
+
+
+
+
+
 
     }
 
@@ -198,7 +216,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                                                                 // checks flags
 
                 if (Integer.parseInt(Gf.roomFlags[2][c]) == 0) { // if first time
-                    texter.append(Gf.thirdLine);
+                    texter.append(Gf.thirdLine + "\n\n");
                     Gf.roomFlags[2][c] = "1";
                 }
                 if (Integer.parseInt(Gf.roomFlags[1][c]) == 0) { // if odd time
