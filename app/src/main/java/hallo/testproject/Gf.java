@@ -140,7 +140,7 @@ public class Gf  { // game functions
 
     }
 
-    public static void updateFlags() { // looks at all txt files and generates a 2d array
+    public static void updateFlags() { // Updates array with txt paths and sets flags
         Log.d("DEBUG", "GF -> path");
 
         Field[] fields=R.raw.class.getFields();

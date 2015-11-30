@@ -176,7 +176,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         }
 
         Log.d("current", Gf.currentPath);
-        Gf.updateFlags();
+
         setText();
 
 
@@ -194,8 +194,8 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
             }
 
 
-            if (Objects.equals(Gf.roomFlags[0][c], Gf.currentPath)) {
-                Log.d("bla","INTO LOOP");
+            if (Objects.equals(Gf.roomFlags[0][c], Gf.currentPath)) { // find current room in array
+                                                                // checks flags
 
                 if (Integer.parseInt(Gf.roomFlags[2][c]) == 0) { // if first time
                     texter.append(Gf.thirdLine);
@@ -205,7 +205,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                     texter.append(Gf.firstLine);
                     Gf.roomFlags[1][c] = "1";
                 }
-                if (Integer.parseInt(Gf.roomFlags[1][c]) == 1) {// if even time
+                else { //(Integer.parseInt(Gf.roomFlags[1][c]) == 1) // if even time
                     texter.append(Gf.secondLine);
                     Gf.roomFlags[1][c] = "0";
                 }

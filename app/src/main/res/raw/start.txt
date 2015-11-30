@@ -1,7 +1,7 @@
-There apears to be four distinct areas surrounding you. A spire, a marsh, a forest, and a mountain.
-There apears to be four distinct areas surrounding you. A spire, a marsh, a forest, and a mountain.
-You wake up to a loud human scream. You pull yourself up and try to gain focus on your surroundings. You don't see anyone around.
+A blizzard surrounds you, and you look up to a mountainside to your left.  The trees of a marsh stand to your right.
+A blizzard surrounds you, and you look up to a mountainside to your left.  The trees of a marsh stand to your right.
+You wake up to a loud human scream. You quickly pull yourself up from the snowbank, but don't see anyone around.
 
 mountain%March to the mountain
-forest%Make for the forest
+
 marsh%Sally forth to the marsh
