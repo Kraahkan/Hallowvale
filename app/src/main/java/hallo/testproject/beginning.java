@@ -95,7 +95,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 Gf.createRoom(rooms, name);
                 updateButtons();
                 //if (!Objects.equals(Gf.buttons[2][0], ""))
-                //    checkHaveItem(Gf.buttons[2][0], 0);
+                 //   checkHaveItem(Gf.buttons[2][0], 0);
                 break;
 
             case R.id.up_button:
@@ -106,7 +106,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 Gf.createRoom(rooms, name );
                 updateButtons();
                 //if (!Objects.equals(Gf.buttons[2][1], ""))
-                //    checkHaveItem(Gf.buttons[2][1], 1);
+                 //  checkHaveItem(Gf.buttons[2][1], 1);
                 break;
 
 
@@ -118,7 +118,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 Gf.createRoom(rooms, name );
                 updateButtons();
                 //if (!Objects.equals(Gf.buttons[2][2], ""))
-                //    checkHaveItem(Gf.buttons[2][2], 2);
+                 //   checkHaveItem(Gf.buttons[2][2], 2);
                 break;
 
 
@@ -130,13 +130,12 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 Gf.createRoom(rooms, name);
                 updateButtons();
                 //if (!Objects.equals(Gf.buttons[2][3], ""))
-                //    checkHaveItem(Gf.buttons[2][3], 3);
+                 //   checkHaveItem(Gf.buttons[2][3], 3);
                 break;
 
             case R.id.take_item_button:
                 takeItem();
-                takeItem.setAlpha(.5f);
-                takeItem.setClickable(false);
+                takeItem.setVisibility(View.GONE);
                 break;
 
             default:
@@ -163,20 +162,70 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     public void initialItemCheck(){
 
-        if (preferenceSettings.getBoolean(Gf.buttons[2][0], false) == false) {
-            Log.d("ItemFalse", Gf.buttons[2][0]);
-            buttons[0].setAlpha(.5f);
-            buttons[0].setClickable(false);
-        } else {
-            Log.d("ItemTrue", Gf.buttons[2][0]);
             buttons[0].setAlpha(1f);
             buttons[0].setClickable(true);
+            buttons[1].setAlpha(1f);
+            buttons[1].setClickable(true);
+            buttons[2].setAlpha(1f);
+            buttons[2].setClickable(true);
+            buttons[3].setAlpha(1f);
+            buttons[3].setClickable(true);
+
+
+        if (!Objects.equals(Gf.buttons[2][0], "")) {
+            if (preferenceSettings.getBoolean(Gf.buttons[2][0], false) == false) {
+                Log.d("ItemFalse", Gf.buttons[2][0]);
+                buttons[0].setAlpha(.5f);
+                buttons[0].setClickable(false);
+            } else {
+                Log.d("ItemTrue", Gf.buttons[2][0]);
+                buttons[0].setAlpha(1f);
+                buttons[0].setClickable(true);
+            }
+        }
+
+        if (!Objects.equals(Gf.buttons[2][1], "")) {
+            if (preferenceSettings.getBoolean(Gf.buttons[2][1], false) == false) {
+                Log.d("ItemFalse", Gf.buttons[2][0]);
+                buttons[1].setAlpha(.5f);
+                buttons[1].setClickable(false);
+            } else {
+                Log.d("ItemTrue", Gf.buttons[2][0]);
+                buttons[1].setAlpha(1f);
+                buttons[1].setClickable(true);
+            }
+        }
+
+        if (!Objects.equals(Gf.buttons[2][2], "")) {
+            if (preferenceSettings.getBoolean(Gf.buttons[2][2], false) == false) {
+                Log.d("ItemFalse", Gf.buttons[2][0]);
+                buttons[2].setAlpha(.5f);
+                buttons[2].setClickable(false);
+            } else {
+                Log.d("ItemTrue", Gf.buttons[2][0]);
+                buttons[2].setAlpha(1f);
+                buttons[2].setClickable(true);
+            }
+        }
+
+
+        if (!Objects.equals(Gf.buttons[2][3], "")) {
+            if (preferenceSettings.getBoolean(Gf.buttons[2][3], false) == false) {
+                Log.d("ItemFalse", Gf.buttons[2][0]);
+                buttons[3].setAlpha(.5f);
+                buttons[3].setClickable(false);
+            } else {
+                Log.d("ItemTrue", Gf.buttons[2][0]);
+                buttons[3].setAlpha(1f);
+                buttons[3].setClickable(true);
+            }
         }
 
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+    }
 
 
 
@@ -203,8 +252,10 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 buttons[c].setVisibility(View.VISIBLE);
 
 
-        if (Gf.item.length() > 0) {
+        if (Gf.item.length() > 0 && preferenceSettings.getBoolean(Gf.item, false) == false) {
             takeItem.setVisibility(View.VISIBLE);
+            takeItem.setAlpha(1f);
+            takeItem.setClickable(true);
             takeItem.setText("Take " + Gf.item);
         }
 
@@ -263,6 +314,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         preferenceEditor.putBoolean("unlittorch", false);
         preferenceEditor.putBoolean("flint", false);
         preferenceEditor.putBoolean("littorch", false);
+        preferenceEditor.putBoolean("book", false);
 
         preferenceEditor.commit();// Always commit
 
