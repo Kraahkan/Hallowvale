@@ -153,8 +153,6 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         m.start();
 
-        int resId;
-        String name = "";
 
         ObjectAnimator scaleAnim = ObjectAnimator.ofFloat(v, "scaleX", 1.0f, 0.5f);
         scaleAnim.setDuration(100);
@@ -162,55 +160,30 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         scaleAnim.setRepeatMode(ValueAnimator.REVERSE);
         scaleAnim.start();
 
+        ObjectAnimator alphaFlash = ObjectAnimator.ofFloat(v, "alpha", 1.0f, 0.5f);
+        alphaFlash.setDuration(100);
+        alphaFlash.setRepeatCount(1);
+        alphaFlash.setRepeatMode(ValueAnimator.REVERSE);
+        alphaFlash.start();
+
 
 
         switch(v.getId()){
 
-
             case R.id.left_button:
-                name = Gf.buttons[0][0];
-                resId = getResources().getIdentifier("raw/" + name, null, this.getPackageName());
-                rooms = getResources().openRawResource(resId);
-                Log.d("Room",String.valueOf(resId));
-                Gf.createRoom(rooms, name);
-                updateButtons();
-                //if (!Objects.equals(Gf.buttons[2][0], ""))
-                //   checkHaveItem(Gf.buttons[2][0], 0);
+                buttonMethod(0);
                 break;
 
             case R.id.up_button:
-                name = Gf.buttons[0][1];
-                resId = getResources().getIdentifier("raw/" + name, null, this.getPackageName());
-                rooms = getResources().openRawResource(resId);
-                Log.d("Room",String.valueOf(resId));
-                Gf.createRoom(rooms, name );
-                updateButtons();
-                //if (!Objects.equals(Gf.buttons[2][1], ""))
-                //  checkHaveItem(Gf.buttons[2][1], 1);
+                buttonMethod(1);
                 break;
-
 
             case R.id.down_button:
-                name = Gf.buttons[0][2];
-                resId = getResources().getIdentifier("raw/" + name, null, this.getPackageName());
-                rooms = getResources().openRawResource(resId);
-                Log.d("Room",String.valueOf(resId));
-                Gf.createRoom(rooms, name );
-                updateButtons();
-                //if (!Objects.equals(Gf.buttons[2][2], ""))
-                //   checkHaveItem(Gf.buttons[2][2], 2);
+                buttonMethod(2);
                 break;
 
-
             case R.id.right_button:
-                name = Gf.buttons[0][3];
-                resId = getResources().getIdentifier("raw/" + name, null, this.getPackageName());
-                rooms = getResources().openRawResource(resId);
-                Log.d("Room", String.valueOf(resId));
-                Gf.createRoom(rooms, name);
-                updateButtons();
-                //if (!Objects.equals(Gf.buttons[2][3], ""))
-                //   checkHaveItem(Gf.buttons[2][3], 3);
+                buttonMethod(3);
                 break;
 
             case R.id.take_item_button:
@@ -231,7 +204,19 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         }
 
         initialItemCheck();
-        //callInventory();
+
+    }
+
+    public void buttonMethod(int i) {
+
+        int resId;
+        String name = "";
+
+        name = Gf.buttons[0][i];
+        resId = getResources().getIdentifier("raw/" + name, null, this.getPackageName());
+        rooms = getResources().openRawResource(resId);
+        Gf.createRoom(rooms, name);
+        updateButtons();
 
     }
 
