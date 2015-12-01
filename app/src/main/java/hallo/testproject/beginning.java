@@ -248,7 +248,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         buttons[2].setClickable(true);
         buttons[3].setAlpha(1f);
         buttons[3].setClickable(true);
-        
+
 
         for (int c = 0; c < 4; c++) {
 
