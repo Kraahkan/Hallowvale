@@ -5,11 +5,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Point;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,6 +23,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.plattysoft.leonids.ParticleSystem;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -35,10 +41,13 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     private static final int PREFERENCE_MODE_PRIVATE = 0;
 
     public Context c;
+
+
     TextView texter;
+
     Button left, up, down, right, takeItem, inventory;
 
-    TextView[] items = new TextView[5];
+    TextView[] items = new TextView[10];
 
     Button buttons[];
 
@@ -46,22 +55,25 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     public int count = -1;
 
     InputStream rooms; // for reading rooms
+    String[] temp = new String[100];
 
     public boolean instFlag = true;
 
-    final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(beginning.this);
 
-    LayoutInflater inflater = this.getLayoutInflater();
-    View dialogView = inflater.inflate(R.layout.inventory, null);
+    boolean played = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        MediaPlayer ambience = MediaPlayer.create(this, R.raw.wind);
+        ambience.start();
+        ambience.setLooping(true);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beginning);
 
         heldItems = new Stack();
-
 
         preferenceSettings = getSharedPreferences("prefs", PREFERENCE_MODE_PRIVATE);
         preferenceEditor = preferenceSettings.edit();
@@ -93,6 +105,14 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         // ----------------------------------------------------
 
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+
+        for (int c = 0; c < width; c = c + 80)
+            snow(c);
+
         Gf.updateFlags(); // populates with txt file paths and sets flags all to 0
 
         InputStream testRoom = getResources().openRawResource(R.raw.start); // first room
@@ -104,11 +124,27 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     }
 
+    public void snow(int pos) {
+
+
+        new ParticleSystem(this, 120, R.drawable.crappysnowflake, 10000) // first is max, second is spawn time
+                .setSpeedModuleAndAngleRange(0.02f, 0.3f, 80, 90) // first two are acceleration, second are angles (min/max)
+                .setRotationSpeed(144)
+                .setFadeOut(1000)
+                        //.setAcceleration(0.00005f, 90)
+                .emit(pos, -20, 3); // x & y spawn pos, # per second
+
+
+    }
+
     @Override
     public void onClick(View v) { // generic on click for all buttons
 
-        int resId;
+        final MediaPlayer m = MediaPlayer.create(this, R.raw.drum);
 
+        m.start();
+
+        int resId;
         String name = "";
         switch(v.getId()){
 
@@ -183,45 +219,32 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     public void callInventory(){
 
-        /*LinearLayout ll = (LinearLayout) findViewById(R.id.inventory_layout);
 
-        for (int i = 0; i < 5; i++)
-        {
-            TextView tv = new TextView(this);
-            tv.setText("Dynamic TextView" + 1);
-            tv.setId(1 + 7);
-            ll.addView(tv);
-        }*/
-
-        //Iterator<String> itr = heldItems.iterator();
-
-        /*final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(beginning.this);
-
-        LayoutInflater inflater = this.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.inventory, null);*/
-
-
-        //String[] temp = new String[100];
-
-        /*final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(beginning.this);
+        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(beginning.this);
 
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.inventory, null);
-        dialogBuilder.setView(dialogView);*/
-
 
         dialogBuilder.setView(dialogView);
+        dialogBuilder.setTitle("Inventory");
 
-
-        if(instFlag) {
             items[0] = (TextView) dialogView.findViewById(R.id.item1);
             items[1] = (TextView) dialogView.findViewById(R.id.item2);
             items[2] = (TextView) dialogView.findViewById(R.id.item3);
             items[3] = (TextView) dialogView.findViewById(R.id.item4);
             items[4] = (TextView) dialogView.findViewById(R.id.item5);
+            items[5] = (TextView) dialogView.findViewById(R.id.item6);
+            items[6] = (TextView) dialogView.findViewById(R.id.item7);
+            items[7] = (TextView) dialogView.findViewById(R.id.item8);
+            items[8] = (TextView) dialogView.findViewById(R.id.item9);
+            items[9] = (TextView) dialogView.findViewById(R.id.item10);
 
-            instFlag = false;
-        }
+
+            for(int i = 0; i < items.length; i++) {
+
+                items[i].setText(temp[i]);
+
+            }
 
 
         dialogBuilder.setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
@@ -341,11 +364,13 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
 
     public void takeItem(){ // when you take an item
+
         preferenceEditor.putBoolean(Gf.item, true);
         preferenceEditor.commit(); //Always commit
 
         heldItems.push(Gf.item);
         count++;
+        temp[count] = Gf.item;
 
     }
 
