@@ -119,7 +119,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         display.getSize(size);
         int width = size.x;
 
-        for (int c = 0; c < width; c = c + 80)
+        for (int c = 0; c < width; c = c + 100)
             snow(c);
 
         Gf.updateFlags(); // populates with txt file paths and sets flags all to 0
