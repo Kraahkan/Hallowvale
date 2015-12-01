@@ -1,20 +1,32 @@
 package hallo.testproject;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Stack;
 
 public class beginning extends AppCompatActivity implements OnClickListener { // This is the main game interface
 
@@ -24,18 +36,32 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     public Context c;
     TextView texter;
-    Button left, up, down, right, takeItem;
+    Button left, up, down, right, takeItem, inventory;
+
+    TextView[] items = new TextView[5];
 
     Button buttons[];
 
+    public Stack<String> heldItems;
+    public int count = -1;
+
     InputStream rooms; // for reading rooms
 
+    public boolean instFlag = true;
+
+    final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(beginning.this);
+
+    LayoutInflater inflater = this.getLayoutInflater();
+    View dialogView = inflater.inflate(R.layout.inventory, null);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beginning);
+
+        heldItems = new Stack();
+
 
         preferenceSettings = getSharedPreferences("prefs", PREFERENCE_MODE_PRIVATE);
         preferenceEditor = preferenceSettings.edit();
@@ -52,12 +78,15 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         down = (Button)findViewById(R.id.down_button);
         right = (Button)findViewById(R.id.right_button);
         takeItem = (Button)findViewById(R.id.take_item_button);
+        inventory = (Button)findViewById(R.id.inventory);
+
 
         left.setOnClickListener(this);
         up.setOnClickListener(this);
         down.setOnClickListener(this);
         right.setOnClickListener(this);
         takeItem.setOnClickListener(this);
+        inventory.setOnClickListener(this);
 
         Button buttons2[] = {left, up, down, right};
         buttons = buttons2;
@@ -133,6 +162,12 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
             case R.id.take_item_button:
                 takeItem();
                 takeItem.setVisibility(View.GONE);
+
+                break;
+
+            case R.id.inventory:
+                callInventory();
+
                 break;
 
             default:
@@ -142,6 +177,63 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         }
 
         initialItemCheck();
+        //callInventory();
+
+    }
+
+    public void callInventory(){
+
+        /*LinearLayout ll = (LinearLayout) findViewById(R.id.inventory_layout);
+
+        for (int i = 0; i < 5; i++)
+        {
+            TextView tv = new TextView(this);
+            tv.setText("Dynamic TextView" + 1);
+            tv.setId(1 + 7);
+            ll.addView(tv);
+        }*/
+
+        //Iterator<String> itr = heldItems.iterator();
+
+        /*final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(beginning.this);
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.inventory, null);*/
+
+
+        //String[] temp = new String[100];
+
+        /*final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(beginning.this);
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.inventory, null);
+        dialogBuilder.setView(dialogView);*/
+
+
+        dialogBuilder.setView(dialogView);
+
+
+        if(instFlag) {
+            items[0] = (TextView) dialogView.findViewById(R.id.item1);
+            items[1] = (TextView) dialogView.findViewById(R.id.item2);
+            items[2] = (TextView) dialogView.findViewById(R.id.item3);
+            items[3] = (TextView) dialogView.findViewById(R.id.item4);
+            items[4] = (TextView) dialogView.findViewById(R.id.item5);
+
+            instFlag = false;
+        }
+
+
+        dialogBuilder.setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+            }
+        });
+
+        AlertDialog alertDialog = dialogBuilder.create();
+
+        alertDialog.show();
+
 
     }
 
@@ -156,8 +248,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         buttons[2].setClickable(true);
         buttons[3].setAlpha(1f);
         buttons[3].setClickable(true);
-
-
+        
 
         for (int c = 0; c < 4; c++) {
 
@@ -252,6 +343,9 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     public void takeItem(){ // when you take an item
         preferenceEditor.putBoolean(Gf.item, true);
         preferenceEditor.commit(); //Always commit
+
+        heldItems.push(Gf.item);
+        count++;
 
     }
 
