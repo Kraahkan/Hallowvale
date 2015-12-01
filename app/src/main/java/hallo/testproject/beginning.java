@@ -1,5 +1,7 @@
 package hallo.testproject;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -47,6 +49,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     TextView texter;
 
     Button left, up, down, right, takeItem, inventory;
+    LinearLayout master;
 
     TextView[] items = new TextView[10];
 
@@ -68,7 +71,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     protected void onCreate(Bundle savedInstanceState) {
 
         MediaPlayer ambience = MediaPlayer.create(this, R.raw.wind);
-        ambience.setVolume(1,1);
+        ambience.setVolume(1, 1);
         ambience.start();
         ambience.setLooping(true);
 
@@ -93,6 +96,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         right = (Button)findViewById(R.id.right_button);
         takeItem = (Button)findViewById(R.id.take_item_button);
         inventory = (Button)findViewById(R.id.inventory);
+        master = (LinearLayout)findViewById(R.id.masterLayout);
 
 
         left.setOnClickListener(this);
@@ -151,6 +155,15 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         int resId;
         String name = "";
+
+        ObjectAnimator scaleAnim = ObjectAnimator.ofFloat(v, "scaleX", 1.0f, 0.5f);
+        scaleAnim.setDuration(100);
+        scaleAnim.setRepeatCount(1);
+        scaleAnim.setRepeatMode(ValueAnimator.REVERSE);
+        scaleAnim.start();
+
+
+
         switch(v.getId()){
 
 
