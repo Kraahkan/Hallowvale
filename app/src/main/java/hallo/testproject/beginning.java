@@ -68,6 +68,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     protected void onCreate(Bundle savedInstanceState) {
 
         MediaPlayer ambience = MediaPlayer.create(this, R.raw.wind);
+        ambience.setVolume(1,1);
         ambience.start();
         ambience.setLooping(true);
 
@@ -131,12 +132,12 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     public void snow(int pos) {
 
 
-        new ParticleSystem(this, 120, R.drawable.crappysnowflake, 10000) // first is max, second is spawn time
+        new ParticleSystem(this, 60, R.drawable.crappysnowflake, 10000) // first is max, second is spawn time
                 .setSpeedModuleAndAngleRange(0.02f, 0.3f, 80, 90) // first two are acceleration, second are angles (min/max)
                 .setRotationSpeed(144)
                 .setFadeOut(1000)
                         //.setAcceleration(0.00005f, 90)
-                .emit(pos, -20, 3); // x & y spawn pos, # per second
+                .emit(pos, -20, 1); // x & y spawn pos, # per second
 
 
     }
@@ -246,7 +247,9 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
             for(int i = 0; i < items.length; i++) {
 
-                items[i].setText(temp[i]);
+                if(!Objects.equals(temp[i], null)) {
+                    items[i].setText(temp[i].toUpperCase());
+                }
 
             }
 
@@ -380,7 +383,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     public void defaultPrefs(){ // default items
 
-        preferenceEditor.putBoolean("unlittorch", false);
+        preferenceEditor.putBoolean("torch", false);
         preferenceEditor.putBoolean("flint", false);
         preferenceEditor.putBoolean("littorch", false);
         preferenceEditor.putBoolean("book", false);
