@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -102,6 +103,9 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         Button buttons2[] = {left, up, down, right};
         buttons = buttons2;
+
+        Typeface myTypeface = Typeface.createFromAsset(getAssets(), "fonts/LibreBaskerville-Regular.ttf");
+        texter.setTypeface(myTypeface);
 
         // ----------------------------------------------------
 
