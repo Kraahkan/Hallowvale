@@ -66,7 +66,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     String[] temp = new String[100];
 
     public boolean instFlag = true;
-    
+
     boolean played = false;
     MediaPlayer ambience;
 
