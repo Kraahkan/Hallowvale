@@ -49,12 +49,15 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     String savedRoom;
     String currentRoom;
+    String[] savedTemp;
 
     TextView texter, riddle, answer;
     EditText riddleAnswer;
 
     Button left, up, down, right, takeItem, inventory;
     LinearLayout master;
+
+    public int backCount = 0;
 
     TextView[] items = new TextView[10];
 
@@ -149,6 +152,15 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         updateButtons();
         preferenceEditor.putString("currentRoom", Gf.currentPath);
+
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+
+        ambience.stop();
+        finish();
 
     }
 
@@ -285,7 +297,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
             items[8] = (TextView) dialogView.findViewById(R.id.item9);
             items[9] = (TextView) dialogView.findViewById(R.id.item10);
 
-            for(int i = 0; i < items.length; i++) {
+            /*for(int i = 0; i < items.length; i++) {
 
                 if(!Objects.equals(temp[i], null)) {
 
@@ -293,7 +305,9 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
                 }
 
-            }
+            }*/
+
+        fillBackpack(); //Fill inventory even after exiting app
 
 
         dialogBuilder.setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
@@ -306,6 +320,23 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         alertDialog.show();
 
+
+    }
+
+    public void fillBackpack(){
+
+        if(preferenceSettings.getBoolean("torch", false)){
+            items[backCount].setText("TORCH");
+            backCount++;
+        }
+        if(preferenceSettings.getBoolean("rope", false)){
+            items[backCount].setText("ROPE");
+            backCount++;
+        }
+        if(preferenceSettings.getBoolean("book", false)){
+            items[backCount].setText("BOOK");
+            backCount++;
+        }
 
     }
 
@@ -433,14 +464,6 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     }
 
-    @Override
-    public void onPause(){
-        super.onPause();
-
-        ambience.stop();
-        finish();
-
-    }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -467,7 +490,8 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         boolean flint = savedInstanceState.getBoolean("flint");
         boolean book = savedInstanceState.getBoolean("book");
         boolean rope = savedInstanceState.getBoolean("rope");
-        String[] savedTemp = savedInstanceState.getStringArray("temp");
+        savedTemp = savedInstanceState.getStringArray("temp");
+        Log.d("savedTemp", savedTemp.toString());
 
         preferenceEditor.putBoolean("torch", torch);
         preferenceEditor.putBoolean("flint", flint);
@@ -476,6 +500,8 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         preferenceEditor.putBoolean("rope", rope);
 
         preferenceEditor.commit();
+
+
         //InputStream restoreRoom = getResources().openRawResource(R.raw.start); // first room
         //Gf.createRoom(restoreRoom, savedRoom);
 
