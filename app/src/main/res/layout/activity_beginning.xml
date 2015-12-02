@@ -17,6 +17,14 @@
         android:layout_height="match_parent"
         >
 
+        <ImageButton
+            android:layout_width="33dp"
+            android:layout_height="46dp"
+            android:id="@+id/imageButton"
+            android:layout_gravity="right"
+            android:background="@drawable/audio"
+            android:onClick="muteSound" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,6 +92,7 @@
             android:layout_weight=".001"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp" />
+
     </LinearLayout>
 
 </LinearLayout>

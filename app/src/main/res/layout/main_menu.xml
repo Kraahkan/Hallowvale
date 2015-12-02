@@ -45,11 +45,12 @@
         <Button
             android:layout_width="133dp"
             android:layout_height="wrap_content"
-            android:text="@string/dnd"
+            android:text="@string/restart"
             android:id="@+id/settingsButton"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:layout_weight="0.12" />
+            android:layout_weight="0.12"
+            android:onClick="locustEating" />
 
         <Button
             android:layout_width="133dp"
@@ -67,6 +68,7 @@
         android:layout_height="65dp"
         android:id="@+id/muteButton"
         android:background="@drawable/audio"
+        android:contentDescription="@string/audio2"
         android:layout_gravity="right"
-        android:contentDescription="@string/audio2" />
+        android:onClick="locustPicking" />
 </LinearLayout>

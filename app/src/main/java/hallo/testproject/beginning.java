@@ -50,6 +50,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     String savedRoom;
     String currentRoom;
     String[] savedTemp;
+    public boolean soundCheck = false;
 
     TextView texter, riddle, answer;
     EditText riddleAnswer;
@@ -83,16 +84,13 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beginning);
 
-        ambience = MediaPlayer.create(this, R.raw.wind);
-        ambience.setVolume(1, 1);
-        ambience.start();
-        ambience.setLooping(true);
-
         heldItems = new Stack();
 
         preferenceSettings = getSharedPreferences("prefs", PREFERENCE_MODE_PRIVATE);
         preferenceEditor = preferenceSettings.edit();
         preferenceSettings.getAll();
+
+        musicOn();
 
         //defaultPrefs(); // Set all shared preferences to default, including items
 
@@ -161,6 +159,30 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         ambience.stop();
         finish();
+
+    }
+
+    public void muteSound(View v){
+
+        if(!soundCheck) {
+            ambience.stop();
+        }else
+        {
+            ambience.start();
+        }
+
+        soundCheck = !soundCheck;
+
+    }
+
+    public void musicOn(){
+
+        ambience = MediaPlayer.create(this, R.raw.wind);
+
+            ambience.setVolume(1, 1);
+            ambience.start();
+            ambience.setLooping(true);
+
 
     }
 
