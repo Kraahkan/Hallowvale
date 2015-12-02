@@ -65,12 +65,13 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
 
     boolean played = false;
+    MediaPlayer ambience;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        MediaPlayer ambience = MediaPlayer.create(this, R.raw.wind);
+        ambience = MediaPlayer.create(this, R.raw.wind);
         ambience.setVolume(1, 1);
         ambience.start();
         ambience.setLooping(true);
@@ -194,7 +195,6 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
             case R.id.inventory:
                 callInventory();
-
                 break;
 
             default:
@@ -242,11 +242,12 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
             items[8] = (TextView) dialogView.findViewById(R.id.item9);
             items[9] = (TextView) dialogView.findViewById(R.id.item10);
 
-
             for(int i = 0; i < items.length; i++) {
 
                 if(!Objects.equals(temp[i], null)) {
+
                     items[i].setText(temp[i].toUpperCase());
+
                 }
 
             }
@@ -386,6 +387,15 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         preferenceEditor.putBoolean("littorch", false);
         preferenceEditor.putBoolean("book", false);
         preferenceEditor.commit();// Always commit
+
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+
+        ambience.stop();
+        this.finish();
 
     }
 

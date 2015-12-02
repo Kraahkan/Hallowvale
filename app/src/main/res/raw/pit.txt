@@ -1,0 +1,8 @@
+You hear whispers coming from all directions. Markings of cow sacrifice have been engraved on the wall.
+You hear whispers coming from all directions. Markings of cow sacrifice have been engraved on the wall.
+You almost break your leg.
+
+table%Right
+spring%Left
+factory%Up
+lava%Down
