@@ -48,6 +48,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     public Context c;
 
     String savedRoom;
+    String currentRoom;
 
     TextView texter, riddle, answer;
     EditText riddleAnswer;
@@ -70,44 +71,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     boolean played = false;
     MediaPlayer ambience;
 
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-        // Save UI state changes to the savedInstanceState.
-        // This bundle will be passed to onCreate if the process is
-        // killed and restarted.
-        savedInstanceState.putString("room", Gf.currentPath);
-        savedInstanceState.putBoolean("torch", preferenceSettings.getBoolean("torch", false));
-        savedInstanceState.putBoolean("flint", preferenceSettings.getBoolean("flint", false));
-        savedInstanceState.putBoolean("book", preferenceSettings.getBoolean("book", false));
-        savedInstanceState.putBoolean("rope", preferenceSettings.getBoolean("rope", false));
-        // etc.
-    }
 
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        // Restore UI state from the savedInstanceState.
-        // This bundle has also been passed to onCreate.
-        savedRoom = savedInstanceState.getString("room", "start");
-        boolean torch = savedInstanceState.getBoolean("torch");
-        boolean flint = savedInstanceState.getBoolean("flint");
-        boolean book = savedInstanceState.getBoolean("book");
-        boolean rope = savedInstanceState.getBoolean("rope");
-
-        preferenceEditor.putBoolean("torch", torch);
-        preferenceEditor.putBoolean("flint", flint);
-        preferenceEditor.putBoolean("littorch", false);
-        preferenceEditor.putBoolean("book", book);
-        preferenceEditor.putBoolean("rope", rope);
-
-        //InputStream restoreRoom = getResources().openRawResource(R.raw.start); // first room
-        //Gf.createRoom(restoreRoom, savedRoom);
-
-        //int resId = getResources().getIdentifier("raw/" + savedRoom, null, this.getPackageName());
-        //rooms = getResources().openRawResource(resId);
-        //Gf.createRoom(rooms, savedRoom);
-    }
 
 
     @Override
@@ -174,12 +138,17 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         Gf.updateFlags(); // populates with txt file paths and sets flags all to 0
 
-        InputStream testRoom = getResources().openRawResource(R.raw.start); // first room
-        Gf.createRoom(testRoom, "start");
+        //InputStream testRoom = getResources().openRawResource(R.raw.start); // first room
+        //Gf.createRoom(testRoom, );
+
+        int resId = getResources().getIdentifier("raw/" + preferenceSettings.getString("currentRoom", "start"), null, this.getPackageName());
+        rooms = getResources().openRawResource(resId);
+        Gf.createRoom(rooms, preferenceSettings.getString("currentRoom", "start"));
 
         initialItemCheck(); // gets called everytime there is a click
 
         updateButtons();
+        preferenceEditor.putString("currentRoom", Gf.currentPath);
 
     }
 
@@ -251,6 +220,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         }
 
         initialItemCheck();
+        preferenceEditor.putString("currentRoom", Gf.currentPath);
 
     }
 
@@ -467,9 +437,51 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     public void onPause(){
         super.onPause();
 
-        //ambience.stop();
-        this.finish();
+        ambience.stop();
+        finish();
 
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        // Save UI state changes to the savedInstanceState.
+        // This bundle will be passed to onCreate if the process is
+        // killed and restarted.
+        savedInstanceState.putString("room", Gf.currentPath);
+        savedInstanceState.putBoolean("torch", preferenceSettings.getBoolean("torch", false));
+        savedInstanceState.putBoolean("flint", preferenceSettings.getBoolean("flint", false));
+        savedInstanceState.putBoolean("book", preferenceSettings.getBoolean("book", false));
+        savedInstanceState.putBoolean("rope", preferenceSettings.getBoolean("rope", false));
+        savedInstanceState.putStringArray("temp", temp);
+        // etc.
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        // Restore UI state from the savedInstanceState.
+        // This bundle has also been passed to onCreate.
+        savedRoom = savedInstanceState.getString("room");
+        boolean torch = savedInstanceState.getBoolean("torch");
+        boolean flint = savedInstanceState.getBoolean("flint");
+        boolean book = savedInstanceState.getBoolean("book");
+        boolean rope = savedInstanceState.getBoolean("rope");
+        String[] savedTemp = savedInstanceState.getStringArray("temp");
+
+        preferenceEditor.putBoolean("torch", torch);
+        preferenceEditor.putBoolean("flint", flint);
+        preferenceEditor.putBoolean("littorch", false);
+        preferenceEditor.putBoolean("book", book);
+        preferenceEditor.putBoolean("rope", rope);
+
+        preferenceEditor.commit();
+        //InputStream restoreRoom = getResources().openRawResource(R.raw.start); // first room
+        //Gf.createRoom(restoreRoom, savedRoom);
+
+        int resId = getResources().getIdentifier("raw/" + savedRoom, null, this.getPackageName());
+        rooms = getResources().openRawResource(resId);
+        Gf.createRoom(rooms, savedRoom);
     }
 
 
