@@ -7,7 +7,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -110,6 +112,11 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         Button buttons2[] = {left, up, down, right};
         buttons = buttons2;
+
+
+        for (int i = 0; i < buttons.length; i++)
+            buttons[i].getBackground().setColorFilter(Color.parseColor("#2E2E2E"), PorterDuff.Mode.MULTIPLY);
+        inventory.getBackground().setColorFilter(Color.parseColor("#2E2E2E"), PorterDuff.Mode.MULTIPLY);
 
         Typeface myTypeface = Typeface.createFromAsset(getAssets(), "fonts/LibreBaskerville-Regular.ttf");
         texter.setTypeface(myTypeface);
