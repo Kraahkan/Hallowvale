@@ -1,0 +1,7 @@
+You are in a dimly lit cave entrance. There is a dark path and a mine cart trail.
+You are in a dimly lit cave entrance. There is a dark path and a mine cart trail.
+Water drips from the roof onto your nose.
+
+darkpath%Enter dark path&torch
+mine%Follow main path
+mountain%Go back

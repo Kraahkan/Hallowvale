@@ -45,6 +45,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     public Context c;
 
+    String savedRoom;
 
     TextView texter, riddle, answer;
     EditText riddleAnswer;
@@ -63,22 +64,60 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     String[] temp = new String[100];
 
     public boolean instFlag = true;
-
-
+    
     boolean played = false;
     MediaPlayer ambience;
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        // Save UI state changes to the savedInstanceState.
+        // This bundle will be passed to onCreate if the process is
+        // killed and restarted.
+        savedInstanceState.putString("room", Gf.currentPath);
+        savedInstanceState.putBoolean("torch", preferenceSettings.getBoolean("torch", false));
+        savedInstanceState.putBoolean("flint", preferenceSettings.getBoolean("flint", false));
+        savedInstanceState.putBoolean("book", preferenceSettings.getBoolean("book", false));
+        savedInstanceState.putBoolean("rope", preferenceSettings.getBoolean("rope", false));
+        // etc.
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        // Restore UI state from the savedInstanceState.
+        // This bundle has also been passed to onCreate.
+        savedRoom = savedInstanceState.getString("room", "start");
+        boolean torch = savedInstanceState.getBoolean("torch");
+        boolean flint = savedInstanceState.getBoolean("flint");
+        boolean book = savedInstanceState.getBoolean("book");
+        boolean rope = savedInstanceState.getBoolean("rope");
+
+        preferenceEditor.putBoolean("torch", torch);
+        preferenceEditor.putBoolean("flint", flint);
+        preferenceEditor.putBoolean("littorch", false);
+        preferenceEditor.putBoolean("book", book);
+        preferenceEditor.putBoolean("rope", rope);
+
+        //InputStream restoreRoom = getResources().openRawResource(R.raw.start); // first room
+        //Gf.createRoom(restoreRoom, savedRoom);
+
+        //int resId = getResources().getIdentifier("raw/" + savedRoom, null, this.getPackageName());
+        //rooms = getResources().openRawResource(resId);
+        //Gf.createRoom(rooms, savedRoom);
+    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_beginning);
+
         ambience = MediaPlayer.create(this, R.raw.wind);
         ambience.setVolume(1, 1);
         ambience.start();
         ambience.setLooping(true);
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_beginning);
 
         heldItems = new Stack();
 
@@ -86,7 +125,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         preferenceEditor = preferenceSettings.edit();
         preferenceSettings.getAll();
 
-        defaultPrefs(); // Set all shared preferences to default, including items
+        //defaultPrefs(); // Set all shared preferences to default, including items
 
         // ----------------------------------------------------
 
@@ -113,6 +152,8 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         Typeface myTypeface = Typeface.createFromAsset(getAssets(), "fonts/LibreBaskerville-Regular.ttf");
         texter.setTypeface(myTypeface);
+
+
 
         // ----------------------------------------------------
 
@@ -167,8 +208,6 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         alphaFlash.setRepeatCount(1);
         alphaFlash.setRepeatMode(ValueAnimator.REVERSE);
         alphaFlash.start();
-
-
 
         switch(v.getId()){
 
@@ -421,8 +460,8 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     public void onPause(){
         super.onPause();
 
-        ambience.stop();
-        //this.finish();
+        //ambience.stop();
+        this.finish();
 
     }
 

@@ -1,6 +1,6 @@
-The icy path trails down into a cobblestone bluff.  Steep, rocky cliffs surround you, on the top of which lies a dead forest.
+The icy path trails down into a cobblestone bluff.  Steep, rocky cliffs surround you, a cave entrance lies at the bottom.
 Surveying the area around you, you see no trace of life.
 In a snowbank to your left, you can see a small cave opening.  The path continues up the bluff.  
 rope
-forest%Enter forest
+caveentrance%Enter cave
 start%Go back down the Icy Path
