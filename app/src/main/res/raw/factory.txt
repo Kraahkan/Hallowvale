@@ -1,0 +1,6 @@
+A very suspicious factory surrouds you. There is a control pannel that seems to do something. You should probably figure out how to operate it.
+A very suspicious factory surrouds you. There is a control pannel that seems to do something. You should probably figure out how to operate it.
+Tink!
+
+secretroom%Operate panel&book
+pit%Go back

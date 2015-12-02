@@ -5,4 +5,4 @@ You almost break your leg.
 table%Right
 spring%Left
 factory%Up
-lava%Down
+spirepit%Go back

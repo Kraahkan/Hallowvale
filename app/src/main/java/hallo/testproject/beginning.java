@@ -46,7 +46,8 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     public Context c;
 
 
-    TextView texter;
+    TextView texter, riddle, answer;
+    EditText riddleAnswer;
 
     Button left, up, down, right, takeItem, inventory;
     LinearLayout master;
@@ -220,6 +221,32 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     }
 
+    public void callRiddleView(){
+
+        final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(beginning.this);
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.riddle, null);
+
+        dialogBuilder.setView(dialogView);
+        dialogBuilder.setTitle("Riddle Room");
+
+        riddle = (TextView)dialogView.findViewById(R.id.view_riddle);
+        answer = (TextView)dialogView.findViewById(R.id.answer);
+        riddleAnswer = (EditText)dialogView.findViewById(R.id.enter_riddle);
+
+        dialogBuilder.setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+            }
+        });
+
+        AlertDialog alertDialog = dialogBuilder.create();
+
+        alertDialog.show();
+
+    }
+
     public void callInventory(){
 
 
@@ -277,7 +304,6 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         buttons[2].setClickable(true);
         buttons[3].setAlpha(1f);
         buttons[3].setClickable(true);
-
 
         for (int c = 0; c < 4; c++) {
 
@@ -386,6 +412,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         preferenceEditor.putBoolean("flint", false);
         preferenceEditor.putBoolean("littorch", false);
         preferenceEditor.putBoolean("book", false);
+        preferenceEditor.putBoolean("rope", false);
         preferenceEditor.commit();// Always commit
 
     }
@@ -395,7 +422,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         super.onPause();
 
         ambience.stop();
-        this.finish();
+        //this.finish();
 
     }
 

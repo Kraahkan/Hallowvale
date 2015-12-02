@@ -2,5 +2,5 @@ There is a giant pit with no bottom visible. You can hear feint sounds of a cow 
 There is a giant pit with no bottom visible. You can hear feint sounds of a cow below.
 You walk around the spire and almost fall into a rift. As dangerous as it looks, you may be able to climb down.
 
-pit%Climb down pit&book
+pit%Climb down pit&rope
 spire%Go back
