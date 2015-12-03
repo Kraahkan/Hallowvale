@@ -17,22 +17,38 @@
         android:layout_height="match_parent"
         android:layout_weight="7">
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/mmenu"
-            android:id="@+id/button2"
-            android:onClick="mainMenuClick" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
-        <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/imageButton"
-            android:backgroundTintMode="multiply"
-            android:layout_marginLeft="150dp"
-            android:background="@drawable/sound"
-            android:backgroundTint="#f1ffc2" />
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mmenu"
+                android:id="@+id/button2"
+                android:onClick="mainMenuClick"
+                android:layout_gravity="left" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/imageButton"
+                android:backgroundTintMode="multiply"
+                android:layout_marginLeft="100dp"
+                android:background="@drawable/sound"
+                android:backgroundTint="#f1ffc2"
+                android:layout_gravity="right" />
+        </LinearLayout>
 
     </LinearLayout>
 
