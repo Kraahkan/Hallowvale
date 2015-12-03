@@ -5,16 +5,11 @@ import android.animation.ValueAnimator;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.Point;
-import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -22,8 +17,6 @@ import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -32,10 +25,6 @@ import android.widget.TextView;
 import com.plattysoft.leonids.ParticleSystem;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Objects;
 import java.util.Stack;
 
@@ -73,9 +62,8 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     public boolean instFlag = true;
 
     boolean played = false;
-    MediaPlayer ambience;
-
-
+    MediaPlayer ambiance;
+    MediaPlayer item;
 
 
     @Override
@@ -117,15 +105,8 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         Button buttons2[] = {left, up, down, right};
         buttons = buttons2;
 
-
-        for (int i = 0; i < buttons.length; i++)
-            buttons[i].getBackground().setColorFilter(Color.parseColor("#2E2E2E"), PorterDuff.Mode.MULTIPLY);
-        inventory.getBackground().setColorFilter(Color.parseColor("#2E2E2E"), PorterDuff.Mode.MULTIPLY);
-
         Typeface myTypeface = Typeface.createFromAsset(getAssets(), "fonts/LibreBaskerville-Regular.ttf");
         texter.setTypeface(myTypeface);
-
-
 
         // ----------------------------------------------------
 
@@ -134,13 +115,10 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         display.getSize(size);
         int width = size.x;
 
-        for (int c = 0; c < width; c = c + 100)
+        for (int c = 0; c < width; c = c + 140)
             snow(c);
 
         Gf.updateFlags(); // populates with txt file paths and sets flags all to 0
-
-        //InputStream testRoom = getResources().openRawResource(R.raw.start); // first room
-        //Gf.createRoom(testRoom, );
 
         int resId = getResources().getIdentifier("raw/" + preferenceSettings.getString("currentRoom", "start"), null, this.getPackageName());
         rooms = getResources().openRawResource(resId);
@@ -157,7 +135,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     public void onPause(){
         super.onPause();
 
-        ambience.stop();
+        ambiance.stop();
         finish();
 
     }
@@ -165,10 +143,10 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     public void muteSound(View v){
 
         if(!soundCheck) {
-            ambience.stop();
+            ambiance.pause();
         }else
         {
-            ambience.start();
+            ambiance.start();
         }
 
         soundCheck = !soundCheck;
@@ -177,13 +155,24 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     public void musicOn(){
 
-        ambience = MediaPlayer.create(this, R.raw.wind);
+        ambiance = MediaPlayer.create(this, R.raw.wind);
 
-            ambience.setVolume(1, 1);
-            ambience.start();
-            ambience.setLooping(true);
+            ambiance.setVolume(1, 1);
+            ambiance.start();
+            ambiance.setLooping(true);
 
 
+    }
+
+    public void item() {
+        item = MediaPlayer.create(this, R.raw.drum);
+        item.start();
+
+        item.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
+            public void onCompletion(MediaPlayer player) {
+                player.release();
+            }
+        });
     }
 
     public void snow(int pos) {
@@ -194,18 +183,21 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 .setRotationSpeed(144)
                 .setFadeOut(1000)
                         //.setAcceleration(0.00005f, 90)
-                .emit(pos, -20, 1); // x & y spawn pos, # per second
+                .emit(pos, -20, 2); // x & y spawn pos, # per second
 
 
     }
 
+
+
     @Override
     public void onClick(View v) { // generic on click for all buttons
 
-        final MediaPlayer m = MediaPlayer.create(this, R.raw.drum);
+        //final MediaPlayer m = MediaPlayer.create(this, R.raw.drum);
 
-        m.start();
+        //m.start();
 
+        float alpha = v.getAlpha();
 
         ObjectAnimator scaleAnim = ObjectAnimator.ofFloat(v, "scaleX", 1.0f, 0.5f);
         scaleAnim.setDuration(100);
@@ -213,11 +205,15 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         scaleAnim.setRepeatMode(ValueAnimator.REVERSE);
         scaleAnim.start();
 
-        ObjectAnimator alphaFlash = ObjectAnimator.ofFloat(v, "alpha", 1.0f, 0.5f);
+        /*ObjectAnimator alphaFlash = ObjectAnimator.ofFloat(v, "alpha", 1.0f, 0.5f);
         alphaFlash.setDuration(100);
         alphaFlash.setRepeatCount(1);
         alphaFlash.setRepeatMode(ValueAnimator.REVERSE);
-        alphaFlash.start();
+        alphaFlash.start();*/
+
+
+
+
 
         switch(v.getId()){
 
@@ -240,6 +236,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
             case R.id.take_item_button:
                 takeItem();
                 takeItem.setVisibility(View.GONE);
+                item();
 
                 break;
 
@@ -253,10 +250,15 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         }
 
+
         initialItemCheck();
         preferenceEditor.putString("currentRoom", Gf.currentPath);
 
     }
+
+
+
+
 
     public void buttonMethod(int i) {
 
@@ -319,15 +321,6 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
             items[8] = (TextView) dialogView.findViewById(R.id.item9);
             items[9] = (TextView) dialogView.findViewById(R.id.item10);
 
-            /*for(int i = 0; i < items.length; i++) {
-
-                if(!Objects.equals(temp[i], null)) {
-
-                    items[i].setText(temp[i].toUpperCase());
-
-                }
-
-            }*/
 
         fillBackpack(); //Fill inventory even after exiting app
 
