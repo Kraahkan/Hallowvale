@@ -84,6 +84,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         musicOn();
 
         //defaultPrefs(); // Set all shared preferences to default, including items
+        //DEV TOOL
 
         // ----------------------------------------------------
 
@@ -227,9 +228,6 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         alphaFlash.start();*/
 
 
-
-
-
         switch(v.getId()){
 
             case R.id.left_button:
@@ -371,6 +369,10 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
             items[backCount].setText("BOOK");
             backCount++;
         }
+        if(preferenceSettings.getBoolean("watch", false)){
+            items[backCount].setText("WATCH");
+            backCount++;
+        }
 
     }
 
@@ -448,6 +450,9 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         texter.setText("");
 
+        texter.append(Gf.currentPath + "\n\n");
+
+
         for (int c = 0; c < Gf.roomFlags[0].length; c++) {
             if (Gf.roomFlags[0][c] != null) {
                 Log.d("path", Gf.roomFlags[0][c]);
@@ -494,6 +499,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         preferenceEditor.putBoolean("littorch", false);
         preferenceEditor.putBoolean("book", false);
         preferenceEditor.putBoolean("rope", false);
+        preferenceEditor.putBoolean("watch", false);
         preferenceEditor.commit();// Always commit
 
     }
@@ -510,6 +516,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         savedInstanceState.putBoolean("flint", preferenceSettings.getBoolean("flint", false));
         savedInstanceState.putBoolean("book", preferenceSettings.getBoolean("book", false));
         savedInstanceState.putBoolean("rope", preferenceSettings.getBoolean("rope", false));
+        savedInstanceState.putBoolean("watch", preferenceSettings.getBoolean("watch", false));
         savedInstanceState.putStringArray("temp", temp);
         // etc.
     }
@@ -524,14 +531,15 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         boolean flint = savedInstanceState.getBoolean("flint");
         boolean book = savedInstanceState.getBoolean("book");
         boolean rope = savedInstanceState.getBoolean("rope");
+        boolean watch = savedInstanceState.getBoolean("watch");
         savedTemp = savedInstanceState.getStringArray("temp");
         Log.d("savedTemp", savedTemp.toString());
 
         preferenceEditor.putBoolean("torch", torch);
         preferenceEditor.putBoolean("flint", flint);
-        preferenceEditor.putBoolean("littorch", false);
         preferenceEditor.putBoolean("book", book);
         preferenceEditor.putBoolean("rope", rope);
+        preferenceEditor.putBoolean("watch", watch);
 
         preferenceEditor.commit();
 

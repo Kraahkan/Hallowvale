@@ -1,0 +1,5 @@
+Faint embers burn in a smouldering campfire, and two backpacks lie in disarray in the snow.  Scattered footprints lead into a cave entrance.
+
+cave%Enter the cave
+
+mountain4%Leave the camp

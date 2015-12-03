@@ -33,7 +33,7 @@
 
         <Button
             android:layout_width="130dp"
-            android:layout_height="60dp"
+            android:layout_height="42dp"
             android:text="@string/paliosaurus"
             android:id="@+id/playButton"
             android:layout_gravity="center|bottom"
@@ -45,7 +45,7 @@
 
         <Button
             android:layout_width="131dp"
-            android:layout_height="59dp"
+            android:layout_height="41dp"
             android:text="@string/restart"
             android:id="@+id/settingsButton"
             android:layout_gravity="center"
@@ -56,13 +56,12 @@
 
         <Button
             android:layout_width="135dp"
-            android:layout_height="51dp"
+            android:layout_height="39dp"
             android:text="@string/barneyfelloffatreeanddied"
             android:id="@+id/quitButton"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:background="@drawable/paper"
-            android:layout_weight="0.11"
             android:textColor="#000001" />
 
     </LinearLayout>

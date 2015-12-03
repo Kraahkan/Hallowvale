@@ -1,7 +1,6 @@
-A blizzard surrounds you, and you look up to a mountainside to your left.  The trees of a marsh stand to your right.
-A blizzard surrounds you, and you look up to a mountainside to your left.  The trees of a marsh stand to your right.
-You wake with a start to a loud human scream. You quickly pull yourself up from the snowbank, but don't see anyone around.
+A brilliant aurora fills the sky above you.  Thick snow surrounds you, and enormous snowdrifts block your way up and down the path.  Tall pine trees line either side of the path, and you can make out an enormous mountain to your right.
 
-mountain%March to the mountain
+You wake to a scream.  You quickly pull yourself up from a snowbank, but your friend is nowhere to be seen. Your horses lie dead in the snow.
 
-marsh%Sally forth to the marsh
+mountain1%Head for the mountain
+forest1%Enter the pine forest

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:id="@+id/inventory_layout"
-    android:background="@drawable/backgroundtwo">
+    android:background="@drawable/leather">
 
     <TextView
         android:layout_width="match_parent"
