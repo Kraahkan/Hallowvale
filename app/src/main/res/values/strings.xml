@@ -17,6 +17,7 @@
     <string name="answer">Answer:</string>
     <string name="riddle">This is a riddle</string>
     <string name="restart">Restart</string>
+    <string name="mmenu">Main Menu</string>
 
     <string-array name="countries_list">
         <item>Afghanistan</item>

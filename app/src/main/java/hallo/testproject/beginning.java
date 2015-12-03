@@ -5,6 +5,7 @@ import android.animation.ValueAnimator;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Point;
 import android.graphics.Typeface;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -45,6 +47,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     EditText riddleAnswer;
 
     Button left, up, down, right, takeItem, inventory;
+    ImageButton sound;
     LinearLayout master;
 
     public int backCount = 0;
@@ -93,6 +96,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         takeItem = (Button)findViewById(R.id.take_item_button);
         inventory = (Button)findViewById(R.id.inventory);
         master = (LinearLayout)findViewById(R.id.masterLayout);
+        sound = (ImageButton)findViewById(R.id.imageButton);
 
 
         left.setOnClickListener(this);
@@ -101,6 +105,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         right.setOnClickListener(this);
         takeItem.setOnClickListener(this);
         inventory.setOnClickListener(this);
+        sound.setOnClickListener(this);
 
         Button buttons2[] = {left, up, down, right};
         buttons = buttons2;
@@ -140,16 +145,26 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     }
 
-    public void muteSound(View v){
+    public void mainMenuClick(View v){
+
+        Intent i = new Intent(beginning.this, MainMenu.class);
+        startActivity(i);
+
+    }
+
+    public void muteSound(){
 
         if(!soundCheck) {
             ambiance.pause();
+            sound.setBackgroundResource(R.drawable.soundmute);
         }else
         {
             ambiance.start();
+            sound.setBackgroundResource(R.drawable.sound);
         }
 
         soundCheck = !soundCheck;
+
 
     }
 
@@ -183,7 +198,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
                 .setRotationSpeed(144)
                 .setFadeOut(1000)
                         //.setAcceleration(0.00005f, 90)
-                .emit(pos, -20, 2); // x & y spawn pos, # per second
+                .emit(pos, -20, 1); // x & y spawn pos, # per second
 
 
     }
@@ -242,6 +257,10 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
             case R.id.inventory:
                 callInventory();
+                break;
+
+            case R.id.imageButton:
+                muteSound();
                 break;
 
             default:
