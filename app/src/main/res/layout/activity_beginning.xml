@@ -15,7 +15,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="9"
+        android:layout_weight="10"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 
@@ -28,8 +28,8 @@
             <Button
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="78dp"
-                android:layout_height="match_parent"
-                android:text="@string/mmenu"
+                android:layout_height="40dp"
+                android:text="Forge"
                 android:id="@+id/button2"
                 android:onClick="forgeClick"
                 android:layout_gravity="left|top"
@@ -49,8 +49,7 @@
                 android:id="@+id/imageButton"
                 android:backgroundTintMode="screen"
                 android:background="@drawable/sound"
-                android:layout_gravity="right"
-                android:layout_marginTop="10dp" />
+                android:layout_gravity="right" />
         </LinearLayout>
 
     </LinearLayout>

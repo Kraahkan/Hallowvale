@@ -40,7 +40,6 @@ public class MainMenu extends AppCompatActivity {
             title.seekTo(trackTime);
 
 
-
         //title.setLooping(true);
         title.start();
 
@@ -52,7 +51,6 @@ public class MainMenu extends AppCompatActivity {
 
 
     public void locustMauling(View v){ // launches the game
-
 
         Intent applePie = new Intent(MainMenu.this, beginning.class);
         startActivity(applePie);

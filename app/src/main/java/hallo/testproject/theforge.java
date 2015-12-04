@@ -1,5 +1,6 @@
 package hallo.testproject;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -116,6 +117,11 @@ public class theforge extends AppCompatActivity {
                preferenceEditor.commit();
                Toast.makeText(getApplicationContext(), "Forged a Grapple", Toast.LENGTH_LONG).show();
                forgedItem.setText("Grapple");
+           }else{
+
+               forgedItem.setText("Already forged");
+               Toast.makeText(getApplicationContext(), "Already forged", Toast.LENGTH_LONG).show();
+
            }
 
         }else
@@ -125,6 +131,24 @@ public class theforge extends AppCompatActivity {
             forgedItem.setText("Nothing happens");
 
         }
+
+    }
+
+    @Override
+    public void onPause(){
+
+        super.onPause();
+
+        finish();
+
+    }
+
+    public void onBackPress(View v){
+
+        Intent i = new Intent(theforge.this, beginning.class);
+        startActivity(i);
+
+        finish();
 
     }
 }

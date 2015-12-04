@@ -3,5 +3,5 @@ Mounted torches illuminate the narrow passage, and jagged carvings inscribe the 
 Stepping into the cave you blink as a sound like a whisper echoes from further downwards.
 
 cave2%Trek onwards
-cave3%Examine the carvings
+cave2%Examine the carvings
 camp%Go back

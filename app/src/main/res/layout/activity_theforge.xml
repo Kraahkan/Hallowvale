@@ -5,8 +5,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="hallo.testproject.theforge"
-    android:orientation="vertical"
-    android:background="@drawable/metal">
+    android:orientation="vertical">
 
     <LinearLayout
         android:orientation="vertical"
@@ -20,14 +19,37 @@
             android:layout_height="match_parent"
             android:layout_weight="3">
 
-            <TextView
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/forge"
-                android:id="@+id/textView5"
-                android:gravity="center_horizontal"
-                android:textSize="30dp" />
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/forge"
+                    android:id="@+id/textView5"
+                    android:gravity="center_horizontal"
+                    android:textSize="25dp"
+                    android:textColor="#ff2039" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/close"
+                    android:id="@+id/menuButton"
+                    android:layout_gravity="right"
+                    android:onClick="onBackPress" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -114,8 +136,8 @@
                     android:id="@+id/forgedItem"
                     android:textAlignment="center"
                     android:gravity="center"
-                    android:background="#828282"
-                    android:textSize="30dp" />
+                    android:textSize="30dp"
+                    android:background="#2b2b2b" />
             </LinearLayout>
         </LinearLayout>
 
