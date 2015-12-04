@@ -2,5 +2,5 @@ You stumble up the winding trail until the it ends at a steep ledge.  The sharp 
 You stumble up the winding trail until the it ends at a steep ledge.  The sharp drop below you ends in a deep chasm, and across from you the trail continues up the mountain.
 
 
-mountain6%Cross the chasm&rope
+mountain6%Cross the chasm&grapple
 mountain4%Go back down

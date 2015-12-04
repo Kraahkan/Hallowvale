@@ -18,7 +18,7 @@
     <string name="riddle">This is a riddle</string>
     <string name="restart">Restart</string>
     <string name="mmenu">Menu</string>
-    <string name="forge">Forged Items</string>
+    <string name="forge">Forge Items</string>
     <string name="doforge">FORGE</string>
 
     <string-array name="countries_list">
