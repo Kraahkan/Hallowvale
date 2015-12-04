@@ -73,6 +73,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     Typeface myTypeface;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -154,6 +155,15 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         Intent i = new Intent(beginning.this, MainMenu.class);
         startActivity(i);
+        finish();
+
+    }
+
+    public void forgeClick(View v){
+
+        Intent i = new Intent(beginning.this, theforge.class);
+        startActivity(i);
+        finish();
 
     }
 

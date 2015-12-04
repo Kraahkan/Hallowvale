@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
@@ -28,6 +29,8 @@ public class forge extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    TextView txt;
 
     /**
      * Use this factory method to create a new instance of
@@ -58,13 +61,22 @@ public class forge extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_forge, container, false);
+
+        View rootView = inflater.inflate(R.layout.fragment_forge, container, false);
+
+        txt = (TextView)rootView.findViewById(R.id.txt);
+        txt.setText("Hi");
+
+
+
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

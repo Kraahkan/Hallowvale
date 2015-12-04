@@ -27,6 +27,7 @@ public class Gf  { // game functions
 
     static String item = ""; // if an item is in the room, will be stored here
 
+
     /// END OF VARS
 
     public static void createRoom(InputStream file, String name) { // creates a room from a txt file

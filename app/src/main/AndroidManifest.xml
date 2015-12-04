@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hallo.testproject" >
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,10 +24,12 @@
         <activity
             android:name=".beginning"
             android:label="@string/title_activity_beginning"
-            android:screenOrientation="portrait">
-
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".theforge"
+            android:label="@string/title_activity_theforge" >
         </activity>
     </application>
-
 
 </manifest>
