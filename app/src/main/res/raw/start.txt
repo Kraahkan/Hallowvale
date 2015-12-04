@@ -4,3 +4,6 @@ You wake to a scream.  You quickly pull yourself up from a snowbank, but your fr
 
 mountain1%Head for the mountain
 forest1%Enter the pine forest
+
+
+The Path

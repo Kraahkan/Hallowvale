@@ -13,6 +13,7 @@ public class Gf  { // game functions
     static String firstLine = ""; // first direction
     static String secondLine = ""; // second direction
     static String thirdLine = ""; // flavor first time txt
+    static String roomName = "";
     static String[] strings = {firstLine, secondLine, thirdLine};
     static String line_read = null;
     static beginning game = new beginning();
@@ -25,17 +26,16 @@ public class Gf  { // game functions
             {"","","",""} // items needed
     };
 
-    static String item = ""; // if an item is in the room, will be stored here
+    static String item = ""; // current item
 
-
-    /// END OF VARS
+    // -------------------------------------------------------------------------------------------
 
     public static void createRoom(InputStream file, String name) { // creates a room from a txt file
 
         currentPath = name;
 
         firstLine = ""; secondLine = ""; thirdLine = "";
-        item = "";
+        item = ""; roomName = "";
 
         for (int c = 0; c < buttons.length; c++)
             for (int d = 0; d < buttons[c].length; d++)
@@ -49,42 +49,65 @@ public class Gf  { // game functions
 
             String line = s.nextLine();
 
-            if (lineNum == 0)
-                firstLine = line;
+            switch (lineNum) {
 
-            if (lineNum == 1)
-                secondLine = line;
+                case 0:
+                    firstLine = line;
+                    break;
 
-            if (lineNum == 2) // descriptions
-                thirdLine = line;
+                case 1:
+                    secondLine = line;
+                    break;
 
-            if (lineNum == 3) // item
-                item = line;
+                case 2:
+                    thirdLine = line;
+                    break;
+
+                case 3:
+                    item = line;
+                    break;
+
+                case 8:
+                    roomName = line;
+                    break;
+
+                default:
+                    break;
+
+            }
+
 
             if (lineNum >= 4 && lineNum <= 7) { // rooms
 
-                boolean end = false;
-                boolean readPath = true; // path is read first, then description, then item
-                boolean readItem = false;
+
+                boolean readPath, readDescription, readItemNeeded, readDirection, end;
+                readPath = true; readDescription = false; readItemNeeded = false; readDirection = false; end = false;
                 int count = 0;
 
                 String path = "", description = "", itemNeeded = "";
+                int direction = 0;
 
-                while ( end == false ) {
+                while (!end) {
 
                     if (line.length() == 0)
                         break;
 
                     if (line.charAt(count) == '%') {
                         readPath = false;
+                        readDescription = true;
                     }
 
                     if (line.charAt(count) == '&') {
-                        readItem = true;
+                        readItemNeeded = true;
                     }
+
+                    if (readDescription && Character.isDigit(line.charAt(count))) // reads direction we are entering the next room
+                        direction = line.charAt(count);
 
                     if (readPath)
                         path += line.charAt(count);
+
+                    if (readI)
 
                     else
 
@@ -105,6 +128,7 @@ public class Gf  { // game functions
                         buttons[0][lineNum - 4] = path;
                         buttons[1][lineNum - 4] = description;
                         buttons[2][lineNum - 4] = itemNeeded;
+                        roomFlags[1][]
                         Log.d("path & description - ", path + " " + "description");
 
                     }
