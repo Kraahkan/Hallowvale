@@ -4,6 +4,7 @@ package hallo.testproject;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,6 +16,8 @@ public class MainMenu extends AppCompatActivity {
     private SharedPreferences preferenceSettings;
     private SharedPreferences.Editor preferenceEditor;
     private static final int PREFERENCE_MODE_PRIVATE = 0;
+
+    MediaPlayer title = MediaPlayer.create(this, R.raw.title);
 
     Context context;
     @Override
@@ -28,6 +31,12 @@ public class MainMenu extends AppCompatActivity {
         preferenceSettings.getAll();
 
         preferenceEditor.putBoolean("mute", false);
+
+        if (title.isLooping())
+            title.start();
+
+        title.start();
+        title.setLooping(true);
     }
 
 
@@ -71,6 +80,7 @@ public class MainMenu extends AppCompatActivity {
        //     Log.d("DEBUG", "Count "+i);
        // }
         super.onPause();
+        title.pause();
 
         finish();
 

@@ -11,7 +11,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_gravity="center_horizontal">
 
         <ImageView
@@ -24,54 +24,52 @@
     </LinearLayout>
 
     <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".03"></LinearLayout>
+
+    <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.37"
         android:layout_marginTop="50dp"
         android:weightSum="1">
 
         <Button
             android:layout_width="130dp"
-            android:layout_height="42dp"
+            android:layout_height="45dp"
             android:text="@string/paliosaurus"
             android:id="@+id/playButton"
-            android:layout_gravity="center|bottom"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             android:nestedScrollingEnabled="false"
             android:onClick="locustMauling"
-            android:background="@drawable/paper"
+            android:background="@drawable/background"
             android:textColor="#000001" />
 
         <Button
-            android:layout_width="131dp"
-            android:layout_height="41dp"
+            android:layout_width="130dp"
+            android:layout_height="45dp"
             android:text="@string/restart"
             android:id="@+id/settingsButton"
-            android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:onClick="locustEating"
-            android:background="@drawable/paper"
-            android:textColor="#000001" />
+            android:background="@drawable/background"
+            android:textColor="#000001"
+            android:layout_gravity="center_horizontal" />
 
         <Button
-            android:layout_width="135dp"
-            android:layout_height="39dp"
+            android:layout_width="130dp"
+            android:layout_height="45dp"
             android:text="@string/barneyfelloffatreeanddied"
             android:id="@+id/quitButton"
-            android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:background="@drawable/paper"
-            android:textColor="#000001" />
+            android:background="@drawable/background"
+            android:textColor="#000001"
+            android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
 
-    <ImageButton
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:id="@+id/muteButton"
-        android:background="@drawable/audio"
-        android:contentDescription="@string/audio2"
-        android:layout_gravity="right"
-        android:onClick="locustPicking" />
 </LinearLayout>
