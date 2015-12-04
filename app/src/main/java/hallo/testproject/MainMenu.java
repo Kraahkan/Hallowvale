@@ -17,11 +17,13 @@ public class MainMenu extends AppCompatActivity {
     private SharedPreferences.Editor preferenceEditor;
     private static final int PREFERENCE_MODE_PRIVATE = 0;
 
-    MediaPlayer title = MediaPlayer.create(this, R.raw.title);
+    MediaPlayer title;
+    int trackTime;
 
     Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
         context = MainMenu.this;
@@ -32,11 +34,20 @@ public class MainMenu extends AppCompatActivity {
 
         preferenceEditor.putBoolean("mute", false);
 
-        if (title.isLooping())
-            title.start();
+        if (((trackTime = preferenceSettings.getInt("trackTime",0)) != 0))
+            title.seekTo(trackTime);
+        else
+
+
+            title.setLooping(true);
+
+        title = MediaPlayer.create(this, R.raw.title);
+
+        Log.d("time", String.valueOf(trackTime));
+
 
         title.start();
-        title.setLooping(true);
+
     }
 
 
@@ -77,11 +88,14 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void onPause(){
-       // for(int i=0; i<1000; i++){
-       //     Log.d("DEBUG", "Count "+i);
-       // }
-        super.onPause();
+
         title.pause();
+        trackTime = title.getCurrentPosition();
+        preferenceEditor.putInt("trackTime",trackTime);
+        Log.d("time",String.valueOf(trackTime));
+        super.onPause();
+
+
 
         finish();
 
