@@ -238,12 +238,6 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         scaleAnim.setRepeatMode(ValueAnimator.REVERSE);
         scaleAnim.start();
 
-        /*ObjectAnimator alphaFlash = ObjectAnimator.ofFloat(v, "alpha", 1.0f, 0.5f);
-        alphaFlash.setDuration(100);
-        alphaFlash.setRepeatCount(1);
-        alphaFlash.setRepeatMode(ValueAnimator.REVERSE);
-        alphaFlash.start();*/
-
 
         switch(v.getId()){
 
@@ -513,6 +507,12 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
             }
 
         }
+
+        ObjectAnimator alphaFlash = ObjectAnimator.ofFloat(texter, "alpha", 1.0f, 0.8f);
+        alphaFlash.setDuration(111);
+        alphaFlash.setRepeatCount(1);
+        alphaFlash.setRepeatMode(ValueAnimator.REVERSE);
+        alphaFlash.start();
     }
 
 

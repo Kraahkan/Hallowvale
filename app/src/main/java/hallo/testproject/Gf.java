@@ -128,7 +128,6 @@ public class Gf  { // game functions
                             if (roomFlags[0][c].equals(currentPath))
                                 roomFlags[1][c] = direction;
 
-                        //Log.d("path & description - ", path + " " + "description");
 
                     }
                 }
