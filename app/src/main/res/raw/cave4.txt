@@ -1,0 +1,6 @@
+The whispers return, and as they sharply ring in your ears, the creature advances towards you.
+
+In front of you stands a hellish creature, an animated rotting skeleton, ablaze in radiant fire.  Two bodies lay at it's feet, their clothes stained with blood.
+
+cave5fight%Fight the flaming skeleton
+cave5flee%Flee back the way you came

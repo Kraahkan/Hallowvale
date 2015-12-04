@@ -1,7 +1,7 @@
-The ground beneath the snow is solid stone.  Smaller cliffs form the base of the mountain, and a winding trail leads up it.  In front of you, a small camp is setup in the cliffside.  
+The ground beneath the snow appears to be solid stone.  Smaller cliffs form the base of the mountain, and a winding trail leads up it.  In front of you, a small camp is setup against the cliffside.
 
 
 
 mountain5%Climb the mountain
-camp%Approach the camp
+camp%Inspect the camp
 mountain3%Go back

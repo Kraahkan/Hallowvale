@@ -1,6 +1,6 @@
-The voice gets louder. However, it is too dark to see...
-The voice gets louder. However, it is too dark to see...
-You need a light source!
+The tunnel continues to slope downwards, but with no more mounted torches.  All you can see ahead of you is a thick, impenetrable darkness.
 
-darkcave%Trek deaper&torch
+As you continue onwards, the whisper sounds again, this time sharply stinging your ears.  A low droning sound fills your ears, and stops abruptly.
+
+darkcave%Brave the darkness
 cave%Go back

@@ -1,7 +1,7 @@
-An ancient cave with strange and foreign carvings surrounds you. You can hear a feint voice coming from farther down the cave.
-An ancient cave with strange and foreign carvings surrounds you. You can hear a feint voice coming from farther down the cave.
+Mounted torches illuminate the narrow passage, and jagged carvings inscribe the spaces inbetween them.  The tunnel continues, sloping sharply downwards.
 
+Stepping into the cave you blink as a sound like a whisper echoes from further downwards.
 
-cave2%Follow voices
-cave3%Examine carvings
-camp%Exit cave
+cave2%Trek onwards
+cave3%Examine the carvings
+camp%Go back

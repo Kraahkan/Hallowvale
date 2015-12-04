@@ -1,0 +1,6 @@
+Up ahead, you can see the top of the mountain, a flat bluff dotted by a solitary tree.
+
+There is no sign of life on the bleak mountain.  Dead shrubbery dots the mountainside, and sharp rocks are the only other feature of the barren peak.
+
+mountaintop%Make for the summit
+mountain5%Go back

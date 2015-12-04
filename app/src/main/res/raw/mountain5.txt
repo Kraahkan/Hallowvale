@@ -1,6 +1,6 @@
-The path is made of very loose rock. The path ends at a steep ledge. You will need something to trek down this ledge.
+You stumble up the winding trail until the it ends at a steep ledge.  The sharp drop below you ends in a deep chasm, and across from you the trail continues up the mountain.
 
 
 
-mountain6%Climb down ledge&rope
+mountain6%Cross the chasm&rope
 mountain4%Go back down

@@ -1,0 +1,6 @@
+You narrowly avoid the falling rocks as the tunnel collapses in front of you.  The corpse advances towards you.
+
+You move back the way you can, but before you can reach the tunnel, the ceiling above you rumbles and begins to crumble.
+
+cave5fight%Fight the flaming skeleton
+cave5flee2%Try to find another way out
