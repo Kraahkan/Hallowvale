@@ -397,7 +397,13 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     public boolean checkValidity(String s){
 
-        return ((Objects.equals(s, "rope") || Objects.equals(s, "pickaxe")) && preferenceSettings.getBoolean("grapple", false));
+        return checkIt("rope", "pickaxe", "grapple", s);
+
+    }
+
+    public boolean checkIt(String item1, String item2, String item3, String current){
+
+        return ((Objects.equals(current, item1) || Objects.equals(current, item2)) && preferenceSettings.getBoolean(item3, false));
 
     }
 

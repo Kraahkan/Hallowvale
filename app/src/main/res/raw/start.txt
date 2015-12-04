@@ -1,7 +1,7 @@
 A brilliant aurora fills the sky above you.  Thick snow surrounds you, and enormous snowdrifts block your way up and down the path.  Tall pine trees line either side of the path, and you can make out an enormous mountain to your right.
 
 You wake to a scream.  You quickly pull yourself up from a snowbank, but your friend is nowhere to be seen. Your horses lie dead in the snow.
-
+butterfly
 mountain1%Head for the mountain
 forest1%Enter the pine forest
 

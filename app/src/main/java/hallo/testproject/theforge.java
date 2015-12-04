@@ -27,7 +27,7 @@ public class theforge extends AppCompatActivity {
     ArrayList<String> items;
     ArrayList<String> items2;
 
-    static String[] itemNames = {"torch", "flint", "book", "rope", "watch", "pickaxe", "grapple"};
+    static String[] itemNames = {"torch", "flint", "book", "rope", "watch", "pickaxe", "grapple", "butterfly"};
 
     TextView text1, text2, forgedItem;
 
@@ -96,14 +96,12 @@ public class theforge extends AppCompatActivity {
 
         for (int i = 0; i < itemNames.length; i++) {
 
-            if (Objects.equals(preferenceSettings.getBoolean(itemNames[i], false), true)) {
+            if (Objects.equals(preferenceSettings.getBoolean(itemNames[i], false), true) && !checkValidity(theforge.itemNames[i])) {
 
                 items.add(itemNames[i].toUpperCase());
                 items2.add(itemNames[i].toUpperCase());
 
             }
-
-
 
         }
 
@@ -111,19 +109,27 @@ public class theforge extends AppCompatActivity {
 
     public void forgeItems(View v){
 
-        if((Objects.equals(selectedItem, "ROPE") && Objects.equals(selectedItem2, "PICKAXE")) || (Objects.equals(selectedItem2, "ROPE") && Objects.equals(selectedItem, "PICKAXE"))){
+        forgeCheck("ROPE", "PICKAXE", "grapple"); //First and second params for items to be forged. Third for the item name that can be created.
 
-           if(Objects.equals(preferenceSettings.getBoolean("grapple", false), false)) {
-               preferenceEditor.putBoolean("grapple", true);
-               preferenceEditor.commit();
-               Toast.makeText(getApplicationContext(), "Forged a Grapple", Toast.LENGTH_LONG).show();
-               forgedItem.setText("Grapple");
-           }else{
+    }
 
-               forgedItem.setText("Already forged");
-               Toast.makeText(getApplicationContext(), "Already forged", Toast.LENGTH_LONG).show();
+    public void forgeCheck(String item1, String item2, String item3){
 
-           }
+
+        if((Objects.equals(selectedItem, item1) && Objects.equals(selectedItem2, item2)) || (Objects.equals(selectedItem2, item1) && Objects.equals(selectedItem, item2))){
+
+
+            if(Objects.equals(preferenceSettings.getBoolean(item3, false), false)) {
+                preferenceEditor.putBoolean(item3, true);
+                preferenceEditor.commit();
+                Toast.makeText(getApplicationContext(), "Forged a " + item3, Toast.LENGTH_LONG).show();
+                forgedItem.setText(item3);
+            }else {
+
+                forgedItem.setText("Already forged");
+                Toast.makeText(getApplicationContext(), "Already forged", Toast.LENGTH_LONG).show();
+
+            }
 
         }else
         {
@@ -134,6 +140,20 @@ public class theforge extends AppCompatActivity {
         }
 
     }
+
+    public boolean checkValidity(String s){
+
+       return checkIt("rope", "pickaxe", "grapple", s);
+
+    }
+
+    public boolean checkIt(String item1, String item2, String item3, String current){
+
+        return ((Objects.equals(current, item1) || Objects.equals(current, item2)) && preferenceSettings.getBoolean(item3, false));
+
+    }
+
+
 
     @Override
     public void onPause(){
