@@ -1,0 +1,7 @@
+An ancient cave with strange and foreign carvings surrounds you. You can hear a feint voice coming from farther down the cave.
+An ancient cave with strange and foreign carvings surrounds you. You can hear a feint voice coming from farther down the cave.
+
+
+cave2%Follow voices
+cave3%Examine carvings
+camp%Exit cave

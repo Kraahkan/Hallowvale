@@ -1,0 +1,6 @@
+The voice gets louder. However, it is too dark to see...
+The voice gets louder. However, it is too dark to see...
+You need a light source!
+
+darkcave%Trek deaper&torch
+cave%Go back

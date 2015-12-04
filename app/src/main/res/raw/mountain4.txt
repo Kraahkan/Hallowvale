@@ -4,4 +4,4 @@ The ground beneath the snow is solid stone.  Smaller cliffs form the base of the
 
 mountain5%Climb the mountain
 camp%Approach the camp
-mountain4%Go back
+mountain3%Go back

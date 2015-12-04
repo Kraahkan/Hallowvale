@@ -1,0 +1,7 @@
+You plunge out of the thick bushes. An small black lake appears in front of you. It is frozen solid.
+You plunge out of the thick bushes. An small black lake appears in front of you. It is frozen solid.
+
+
+lake1%Walk on the lake
+shrine1%Walk around
+forest2%Go back

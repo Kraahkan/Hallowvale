@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
@@ -15,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -68,6 +70,8 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     MediaPlayer ambiance;
     MediaPlayer item;
 
+    Typeface myTypeface;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +115,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         Button buttons2[] = {left, up, down, right};
         buttons = buttons2;
 
-        Typeface myTypeface = Typeface.createFromAsset(getAssets(), "fonts/LibreBaskerville-Regular.ttf");
+        myTypeface = Typeface.createFromAsset(getAssets(), "fonts/LibreBaskerville-Regular.ttf");
         texter.setTypeface(myTypeface);
 
         // ----------------------------------------------------
@@ -325,6 +329,19 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         View dialogView = inflater.inflate(R.layout.inventory, null);
 
         dialogBuilder.setView(dialogView);
+
+        TextView title = new TextView(this);
+// You Can Customise your Title here
+        title.setText("Backpack");
+        title.setTypeface(myTypeface);
+        title.setBackgroundColor(Color.DKGRAY);
+        title.setPadding(10, 10, 10, 10);
+        title.setGravity(Gravity.CENTER);
+        title.setTextColor(Color.WHITE);
+        title.setTextSize(20);
+
+        dialogBuilder.setCustomTitle(title);
+
         dialogBuilder.setTitle("Inventory");
 
             items[0] = (TextView) dialogView.findViewById(R.id.item1);
@@ -373,6 +390,8 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
             items[backCount].setText("WATCH");
             backCount++;
         }
+
+        backCount = 0;
 
     }
 

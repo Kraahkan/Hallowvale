@@ -1,0 +1,6 @@
+The path is made of very loose rock. The path ends at a steep ledge. You will need something to trek down this ledge.
+
+
+
+mountain6%Climb down ledge&rope
+mountain4%Go back down

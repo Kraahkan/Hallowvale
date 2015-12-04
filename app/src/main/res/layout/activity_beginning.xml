@@ -27,12 +27,12 @@
 
             <Button
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
                 android:text="@string/mmenu"
                 android:id="@+id/button2"
                 android:onClick="mainMenuClick"
-                android:layout_gravity="left"
+                android:layout_gravity="left|top"
                 android:backgroundTint="#2E2E2E"
                 android:backgroundTintMode="src_over" />
         </LinearLayout>
@@ -50,7 +50,6 @@
                 android:backgroundTintMode="screen"
                 android:layout_marginLeft="100dp"
                 android:background="@drawable/sound"
-                android:backgroundTint="#2E2E2E"
                 android:layout_gravity="right" />
         </LinearLayout>
 
@@ -94,7 +93,7 @@
             android:layout_weight=".001"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:backgroundTint="#2E2E2E"
+            android:backgroundTint="#474747"
             android:backgroundTintMode="src_over" />
 
         <Button

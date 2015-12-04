@@ -1,0 +1,7 @@
+The forest gets extremely dense. What looks like a very old and decayed tree fort rests in one of the trees.
+The forest gets extremely dense. What looks like a very old and decayed tree fort rests in one of the trees.
+
+
+forest3%Venture deeper
+tree%Climb tree
+forest1%Go back
