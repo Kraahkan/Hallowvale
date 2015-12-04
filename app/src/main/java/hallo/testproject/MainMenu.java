@@ -34,19 +34,19 @@ public class MainMenu extends AppCompatActivity {
 
         preferenceEditor.putBoolean("mute", false);
 
-        if (((trackTime = preferenceSettings.getInt("trackTime",0)) != 0))
-            title.seekTo(trackTime);
-        else
+        //if (((trackTime = preferenceSettings.getInt("trackTime",0)) != 0))
+         //   title.seekTo(trackTime);
+       // else
 
 
-            title.setLooping(true);
+            //title.setLooping(true);
 
-        title = MediaPlayer.create(this, R.raw.title);
+        //title = MediaPlayer.create(this, R.raw.title);
 
-        Log.d("time", String.valueOf(trackTime));
+        //Log.d("time", String.valueOf(trackTime));
 
 
-        title.start();
+        //title.start();
 
     }
 
@@ -89,9 +89,9 @@ public class MainMenu extends AppCompatActivity {
 
     public void onPause(){
 
-        title.pause();
-        trackTime = title.getCurrentPosition();
-        preferenceEditor.putInt("trackTime",trackTime);
+        //title.pause();
+        //trackTime = title.getCurrentPosition();
+        //preferenceEditor.putInt("trackTime",trackTime);
         Log.d("time",String.valueOf(trackTime));
         super.onPause();
 

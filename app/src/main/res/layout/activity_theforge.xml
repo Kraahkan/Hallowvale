@@ -26,7 +26,8 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/forge"
                 android:id="@+id/textView5"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:textSize="30dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -113,7 +114,7 @@
                     android:id="@+id/forgedItem"
                     android:textAlignment="center"
                     android:gravity="center"
-                    android:background="#494949"
+                    android:background="#828282"
                     android:textSize="30dp" />
             </LinearLayout>
         </LinearLayout>

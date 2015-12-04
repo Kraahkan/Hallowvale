@@ -121,7 +121,8 @@ public class theforge extends AppCompatActivity {
         }else
         {
 
-            Toast.makeText(getApplicationContext(), "Cannot forge these items", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Nothing happens", Toast.LENGTH_LONG).show();
+            forgedItem.setText("Nothing happens");
 
         }
 
