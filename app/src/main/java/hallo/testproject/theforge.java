@@ -122,8 +122,9 @@ public class theforge extends AppCompatActivity {
             if(Objects.equals(preferenceSettings.getBoolean(item3, false), false)) {
                 preferenceEditor.putBoolean(item3, true);
                 preferenceEditor.commit();
-                Toast.makeText(getApplicationContext(), "Forged a " + item3, Toast.LENGTH_LONG).show();
-                forgedItem.setText(item3);
+                Toast.makeText(getApplicationContext(), "Forged a " + item3.substring(0, 1).toUpperCase() + item3.substring(1), Toast.LENGTH_LONG).show();
+                forgedItem.setText(item3.substring(0, 1).toUpperCase() + item3.substring(1));
+
             }else {
 
                 forgedItem.setText("Already forged");
