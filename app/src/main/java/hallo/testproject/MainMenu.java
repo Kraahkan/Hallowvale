@@ -70,6 +70,7 @@ public class MainMenu extends AppCompatActivity {
         preferenceEditor.putBoolean("book", false);
         preferenceEditor.putBoolean("rope", false);
         preferenceEditor.putBoolean("watch", false);
+        preferenceEditor.putBoolean("grapple", false);
         preferenceEditor.putString("currentRoom", "start");
         preferenceEditor.commit();// Always commit
 

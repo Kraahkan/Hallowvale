@@ -25,14 +25,19 @@ public class theforge extends AppCompatActivity {
 
     ArrayList<String> items;
     ArrayList<String> items2;
-    String[] itemNames = {"torch", "flint", "book", "rope", "watch"};
+    static String[] itemNames = {"torch", "flint", "book", "rope", "watch", "grapple"};
 
-    TextView text1, text2;
+    TextView text1, text2, forgedItem;
+
+    String selectedItem, selectedItem2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_theforge);
+
+        selectedItem = "";
+        selectedItem2 = "";
 
         items = new ArrayList<String>();
         items2 = new ArrayList<String>();
@@ -41,6 +46,7 @@ public class theforge extends AppCompatActivity {
 
         text1 = (TextView)findViewById(R.id.itemForge1);
         text2 = (TextView)findViewById(R.id.itemForge2);
+        forgedItem = (TextView)findViewById(R.id.forgedItem);
 
         preferenceSettings = getSharedPreferences("prefs", PREFERENCE_MODE_PRIVATE);
         preferenceEditor = preferenceSettings.edit();
@@ -58,10 +64,10 @@ public class theforge extends AppCompatActivity {
             // argument position gives the index of item which is clicked
             public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
 
-                String selectedAnimal = items.get(position);
+                selectedItem = items.get(position);
                 //Toast.makeText(getApplicationContext(), "Item selected " + selectedAnimal, Toast.LENGTH_LONG).show();
 
-                text1.setText(selectedAnimal);
+                text1.setText(selectedItem);
             }
         });
 
@@ -74,10 +80,10 @@ public class theforge extends AppCompatActivity {
             // argument position gives the index of item which is clicked
             public void onItemClick(AdapterView<?> arg0, View v, int position, long arg3) {
 
-                String selectedAnimal = items.get(position);
+                selectedItem2 = items.get(position);
                 //Toast.makeText(getApplicationContext(), "Item selected " + selectedAnimal, Toast.LENGTH_LONG).show();
 
-                text2.setText(selectedAnimal);
+                text2.setText(selectedItem2);
             }
         });
 
@@ -96,6 +102,26 @@ public class theforge extends AppCompatActivity {
             }
 
 
+
+        }
+
+    }
+
+    public void forgeItems(View v){
+
+        if((Objects.equals(selectedItem, "ROPE") && Objects.equals(selectedItem2, "WATCH")) || (Objects.equals(selectedItem2, "ROPE") && Objects.equals(selectedItem, "WATCH"))){
+
+           if(Objects.equals(preferenceSettings.getBoolean("grapple", false), false)) {
+               preferenceEditor.putBoolean("grapple", true);
+               preferenceEditor.commit();
+               Toast.makeText(getApplicationContext(), "Forged a Grapple", Toast.LENGTH_LONG).show();
+               forgedItem.setText("Grapple");
+           }
+
+        }else
+        {
+
+            Toast.makeText(getApplicationContext(), "Cannot forge these items", Toast.LENGTH_LONG).show();
 
         }
 

@@ -384,7 +384,18 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     public void fillBackpack(){
 
-        if(preferenceSettings.getBoolean("torch", false)){
+
+        for(int i = 0; i < theforge.itemNames.length; i++){
+
+            if(preferenceSettings.getBoolean(theforge.itemNames[i], false)){
+                items[backCount].setText(theforge.itemNames[i].toUpperCase());
+                backCount++;
+            }
+
+        }
+
+
+        /*if(preferenceSettings.getBoolean("torch", false)){
             items[backCount].setText("TORCH");
             backCount++;
         }
@@ -400,6 +411,10 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
             items[backCount].setText("WATCH");
             backCount++;
         }
+        if(preferenceSettings.getBoolean("grapple", false)){
+            items[backCount].setText("GRAPPLE");
+            backCount++;
+        }*/
 
         backCount = 0;
 
@@ -529,6 +544,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         preferenceEditor.putBoolean("book", false);
         preferenceEditor.putBoolean("rope", false);
         preferenceEditor.putBoolean("watch", false);
+        preferenceEditor.putBoolean("grapple", false);
         preferenceEditor.commit();// Always commit
 
     }
