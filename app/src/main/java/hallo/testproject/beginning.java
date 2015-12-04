@@ -198,7 +198,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         item = MediaPlayer.create(this, R.raw.drum);
         item.start();
 
-        item.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
+        item.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer player) {
                 player.release();
             }
@@ -387,36 +387,20 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         for(int i = 0; i < theforge.itemNames.length; i++){
 
-            if(preferenceSettings.getBoolean(theforge.itemNames[i], false)){
+            if(preferenceSettings.getBoolean(theforge.itemNames[i], false) && !checkValidity(theforge.itemNames[i])){
                 items[backCount].setText(theforge.itemNames[i].toUpperCase());
                 backCount++;
             }
 
         }
 
-
-        /*if(preferenceSettings.getBoolean("torch", false)){
-            items[backCount].setText("TORCH");
-            backCount++;
-        }
-        if(preferenceSettings.getBoolean("rope", false)){
-            items[backCount].setText("ROPE");
-            backCount++;
-        }
-        if(preferenceSettings.getBoolean("book", false)){
-            items[backCount].setText("BOOK");
-            backCount++;
-        }
-        if(preferenceSettings.getBoolean("watch", false)){
-            items[backCount].setText("WATCH");
-            backCount++;
-        }
-        if(preferenceSettings.getBoolean("grapple", false)){
-            items[backCount].setText("GRAPPLE");
-            backCount++;
-        }*/
-
         backCount = 0;
+
+    }
+
+    public boolean checkValidity(String s){
+
+        return ((Objects.equals(s, "rope") || Objects.equals(s, "pickaxe")) && preferenceSettings.getBoolean("grapple", false));
 
     }
 
