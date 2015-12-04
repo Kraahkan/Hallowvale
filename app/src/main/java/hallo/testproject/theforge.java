@@ -26,7 +26,7 @@ public class theforge extends AppCompatActivity {
 
     ArrayList<String> items;
     ArrayList<String> items2;
-    static String[] itemNames = {"torch", "flint", "book", "rope", "watch", "grapple"};
+    static String[] itemNames = {"torch", "flint", "book", "rope", "watch", "pickaxe", "grapple"};
 
     TextView text1, text2, forgedItem;
 
@@ -110,7 +110,7 @@ public class theforge extends AppCompatActivity {
 
     public void forgeItems(View v){
 
-        if((Objects.equals(selectedItem, "ROPE") && Objects.equals(selectedItem2, "WATCH")) || (Objects.equals(selectedItem2, "ROPE") && Objects.equals(selectedItem, "WATCH"))){
+        if((Objects.equals(selectedItem, "ROPE") && Objects.equals(selectedItem2, "PICKAXE")) || (Objects.equals(selectedItem2, "ROPE") && Objects.equals(selectedItem, "PICKAXE"))){
 
            if(Objects.equals(preferenceSettings.getBoolean("grapple", false), false)) {
                preferenceEditor.putBoolean("grapple", true);

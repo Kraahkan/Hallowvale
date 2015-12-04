@@ -494,7 +494,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         texter.setText("");
 
-        texter.append(Gf.currentPath + "\n\n");
+        //texter.append(Gf.currentPath + "\n\n");
 
 
         for (int c = 0; c < Gf.roomFlags[0].length; c++) {

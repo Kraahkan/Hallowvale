@@ -75,13 +75,13 @@ public class MainMenu extends AppCompatActivity {
 
     public void resetPrefs(){
 
-        preferenceEditor.putBoolean("torch", false);
-        preferenceEditor.putBoolean("flint", false);
-        preferenceEditor.putBoolean("littorch", false);
-        preferenceEditor.putBoolean("book", false);
-        preferenceEditor.putBoolean("rope", false);
-        preferenceEditor.putBoolean("watch", false);
-        preferenceEditor.putBoolean("grapple", false);
+        for(int i = 0; i < theforge.itemNames.length; i++){
+
+            preferenceEditor.putBoolean(theforge.itemNames[i], false);
+
+        }
+
+
         preferenceEditor.putString("currentRoom", "start");
         preferenceEditor.commit();// Always commit
 
@@ -91,7 +91,7 @@ public class MainMenu extends AppCompatActivity {
 
         title.pause();
         trackTime = title.getCurrentPosition();
-        preferenceEditor.putInt("trackTime",trackTime);
+        preferenceEditor.putInt("trackTime", trackTime);
         Log.d("time", String.valueOf(trackTime));
         title.reset();
         title.release();
@@ -105,7 +105,7 @@ public class MainMenu extends AppCompatActivity {
 
     public void onDestroy() {
 
-        preferenceEditor.putInt("trackTime",0);
+        preferenceEditor.putInt("trackTime", 0);
         title.release();
         super.onDestroy();
 
