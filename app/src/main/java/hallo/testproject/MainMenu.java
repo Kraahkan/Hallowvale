@@ -34,27 +34,29 @@ public class MainMenu extends AppCompatActivity {
 
         preferenceEditor.putBoolean("mute", false);
 
-        //if (((trackTime = preferenceSettings.getInt("trackTime",0)) != 0))
-         //   title.seekTo(trackTime);
-       // else
+        title = MediaPlayer.create(this, R.raw.title);
+
+        if (((trackTime = preferenceSettings.getInt("trackTime",0)) != 0))
+            title.seekTo(trackTime);
 
 
-            //title.setLooping(true);
 
-        //title = MediaPlayer.create(this, R.raw.title);
-
-        //Log.d("time", String.valueOf(trackTime));
+        //title.setLooping(true);
+        title.start();
 
 
-        //title.start();
+        Log.d("time", String.valueOf(trackTime));
+
 
     }
 
 
     public void locustMauling(View v){ // launches the game
 
+
         Intent applePie = new Intent(MainMenu.this, beginning.class);
         startActivity(applePie);
+
         finish();
 
     }
@@ -89,15 +91,25 @@ public class MainMenu extends AppCompatActivity {
 
     public void onPause(){
 
-        //title.pause();
-        //trackTime = title.getCurrentPosition();
-        //preferenceEditor.putInt("trackTime",trackTime);
-        Log.d("time",String.valueOf(trackTime));
+        title.pause();
+        trackTime = title.getCurrentPosition();
+        preferenceEditor.putInt("trackTime",trackTime);
+        Log.d("time", String.valueOf(trackTime));
+        title.reset();
+        title.release();
         super.onPause();
 
 
 
-        finish();
+        //finish();
+
+    }
+
+    public void onDestroy() {
+
+        preferenceEditor.putInt("trackTime",0);
+        title.release();
+        super.onDestroy();
 
     }
 }
