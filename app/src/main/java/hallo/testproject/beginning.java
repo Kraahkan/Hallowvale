@@ -45,7 +45,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     String[] savedTemp;
     public boolean soundCheck = false;
 
-    TextView texter, riddle, answer;
+    TextView texter, riddle, answer, title;
     EditText riddleAnswer;
 
     Button left, up, down, right, takeItem, inventory;
@@ -95,6 +95,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         texter = (TextView)findViewById(R.id.textView4);
         texter.setMovementMethod(new ScrollingMovementMethod()); // scrolled txtview
+        title = (TextView)findViewById(R.id.title);
         left = (Button)findViewById(R.id.left_button);
         up = (Button)findViewById(R.id.up_button);
         down = (Button)findViewById(R.id.down_button);
@@ -118,6 +119,8 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         myTypeface = Typeface.createFromAsset(getAssets(), "fonts/LibreBaskerville-Regular.ttf");
         texter.setTypeface(myTypeface);
+        title.setTypeface(myTypeface);
+        title.setGravity(Gravity.CENTER);
 
         // ----------------------------------------------------
 
@@ -477,7 +480,12 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
     public void setText() {
 
         texter.setText("");
-
+        String format = String.format("%S", Gf.roomName);
+        String buffer = "";
+        for (int i = 0; i < format.length(); i++)
+            buffer += format.charAt(i) + " ";
+        Log.d("buffer", buffer);
+        title.setText(buffer);
         //texter.append(Gf.currentPath + "\n\n");
 
 

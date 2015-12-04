@@ -26,6 +26,7 @@ public class theforge extends AppCompatActivity {
 
     ArrayList<String> items;
     ArrayList<String> items2;
+
     static String[] itemNames = {"torch", "flint", "book", "rope", "watch", "pickaxe", "grapple"};
 
     TextView text1, text2, forgedItem;

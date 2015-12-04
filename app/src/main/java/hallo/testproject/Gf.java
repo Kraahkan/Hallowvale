@@ -84,40 +84,36 @@ public class Gf  { // game functions
                 readPath = true; readDescription = false; readItemNeeded = false; readDirection = false; end = false;
                 int count = 0;
 
-                String path = "", description = "", itemNeeded = "";
-                int direction = 0;
+                String path = "", description = "", itemNeeded = ""; String direction = "";
 
                 while (!end) {
 
-                    if (line.length() == 0)
+                    if (line.length() == 0) // break if line is empty
                         break;
 
-                    if (line.charAt(count) == '%') {
+                    if (line.charAt(count) == '%') { //check if done reading path
                         readPath = false;
                         readDescription = true;
                     }
 
-                    if (line.charAt(count) == '&') {
+                    if (line.charAt(count) == '&') { // check if done reading description
+                        readDescription = false;
                         readItemNeeded = true;
                     }
-
-                    if (readDescription && Character.isDigit(line.charAt(count))) // reads direction we are entering the next room
-                        direction = line.charAt(count);
 
                     if (readPath)
                         path += line.charAt(count);
 
-                    if (readI)
-
-                    else
-
-                    if (line.charAt(count) != '%' && !readItem )
+                    if (readDescription && line.charAt(count) != '%')
                         description += line.charAt(count);
 
-                    if (readItem && line.charAt(count) != '&')
+                    if (readItemNeeded && line.charAt(count) != '&')
                         itemNeeded += line.charAt(count);
 
-                    if ( count == line.length() - 1 )
+                    if (readItemNeeded && Character.isDigit(line.charAt(count))) // reads direction we are entering the next room
+                        direction = String.valueOf(line.charAt(count));
+
+                    if ( count == line.length() - 1 ) // checks if end of line
                         end = true;
 
                     if ( count < line.length() - 1 )
@@ -128,12 +124,16 @@ public class Gf  { // game functions
                         buttons[0][lineNum - 4] = path;
                         buttons[1][lineNum - 4] = description;
                         buttons[2][lineNum - 4] = itemNeeded;
-                        roomFlags[1][]
-                        Log.d("path & description - ", path + " " + "description");
+                        for (int c = 0; c < roomFlags[0][c].length(); c++) // changes direction
+                            if (roomFlags[0][c].equals(currentPath))
+                                roomFlags[1][c] = direction;
+
+                        //Log.d("path & description - ", path + " " + "description");
 
                     }
                 }
             }
+
             lineNum++;
 
             // update flag

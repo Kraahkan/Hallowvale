@@ -64,6 +64,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/title"
+            android:layout_weight="300"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textSize="22dp"
+            android:layout_marginBottom="10dp"
+            android:typeface="serif"
+            android:scrollbars = "vertical"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/textView4"
             android:layout_weight="1000"
             android:layout_marginLeft="15dp"
@@ -75,7 +90,7 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:text="Backpack"
             android:id="@+id/inventory"
             android:layout_weight=".001"
@@ -86,7 +101,7 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:text="@string/take_item"
             android:id="@+id/take_item_button"
             android:layout_weight=".001"
@@ -97,7 +112,7 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:text="@string/left"
             android:id="@+id/left_button"
             android:layout_weight=".001"
@@ -108,7 +123,7 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:text="@string/up"
             android:id="@+id/up_button"
             android:layout_weight=".001"
@@ -119,7 +134,7 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:text="@string/down"
             android:id="@+id/down_button"
             android:layout_weight=".001"
@@ -130,7 +145,7 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:text="@string/right"
             android:id="@+id/right_button"
             android:layout_weight=".001"
