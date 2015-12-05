@@ -133,7 +133,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         rooms = getResources().openRawResource(resId);
         Gf.createRoom(rooms, preferenceSettings.getString("currentRoom", "start"));
 
-        initialItemCheck(); // gets called everytime there is a click
+        initialItemCheck(); // gets called everytime there is a clic
 
         updateButtons();
         preferenceEditor.putString("currentRoom", Gf.currentPath);
