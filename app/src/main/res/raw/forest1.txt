@@ -4,3 +4,6 @@ The forest is quite dense. You can feel a very evil presence haunting these wood
 
 forest2%Continue onwards
 start%Go back
+
+
+Pine Forest

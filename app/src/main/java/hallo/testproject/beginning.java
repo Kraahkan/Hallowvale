@@ -123,14 +123,9 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         title.setGravity(Gravity.CENTER);
 
         // ----------------------------------------------------
-
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
-
-        for (int c = 0; c < width; c = c + 140)
-            snow(c);
+        
+        //rain(22);
+        snow(140);
 
         Gf.updateFlags(); // populates with txt file paths and sets flags all to 0
 
@@ -208,17 +203,44 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
         });
     }
 
-    public void snow(int pos) {
+    public void snow(int space) {
 
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
 
-        new ParticleSystem(this, 60, R.drawable.crappysnowflake, 10000) // first is max, second is spawn time
-                .setSpeedModuleAndAngleRange(0.02f, 0.3f, 80, 90) // first two are acceleration, second are angles (min/max)
-                .setRotationSpeed(144)
-                .setFadeOut(1000)
-                        //.setAcceleration(0.00005f, 90)
-                .emit(pos, -20, 1); // x & y spawn pos, # per second
+        for (int pos = 0; pos < width; pos = pos + space) {
 
+            new ParticleSystem(this, 60, R.drawable.crappysnowflake, 10000) // first is max, second is spawn time
+                    .setSpeedModuleAndAngleRange(0.02f, 0.3f, 80, 90) // first two are acceleration, second are angles (min/max)
+                    .setRotationSpeed(144)
+                    .setFadeOut(1000)
+                            //.setAcceleration(0.00005f, 90)
+                    .emit(pos, -20, 1); // x & y spawn pos, # per second
 
+        }
+    }
+
+    public void rain(int space) {
+
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+
+        for (int pos = 0; pos < width; pos = pos + space) {
+
+            new ParticleSystem(this, 3000, R.drawable.rain, 10000) // first is max, second is spawn time
+                    .setSpeedModuleAndAngleRange(1.3f, 1.8f, 70, 111) // first two are acceleration, second are angles (min/max)
+
+                    .setRotationSpeed(1)
+                    .setFadeOut(1000)
+                    .setAcceleration(0.00005f, 90)
+
+                    .emit(pos, -20, 1); // x & y spawn pos, # per second
+
+        }
     }
 
 

@@ -5,3 +5,5 @@ The trees begin to thin, and the snowy pines are replaced with a rolling tundra.
 mountain4%Make for the hills
 mountain4%Approach the mountain
 mountain2%Go back
+
+Tundra

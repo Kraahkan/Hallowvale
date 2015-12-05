@@ -4,3 +4,6 @@ You stumble up the winding trail until the it ends at a steep ledge.  The sharp 
 
 mountain6%Cross the chasm&rope
 mountain4%Go back down
+
+
+The Mountain

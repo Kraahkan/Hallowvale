@@ -4,3 +4,6 @@ You cross the chasm triumphantly, and continue up the trail.  Looking behind you
 
 mountain7%Continue
 mountain5%Go back
+
+
+The Mountain

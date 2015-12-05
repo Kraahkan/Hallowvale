@@ -3,3 +3,7 @@ Around you can survey the barren tundra in which the mountain stands.  As you wa
 You pull yourself triumphantly to the top of the mountain.  The lone tree stands near you, buffeted by the wind.
 
 lonelytree%Inspect the tree
+
+
+
+The Mountain

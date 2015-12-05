@@ -4,3 +4,6 @@ There is no sign of life on the bleak mountain.  Dead shrubbery dots the mountai
 
 mountaintop%Make for the summit
 mountain5%Go back
+
+
+The Mountain

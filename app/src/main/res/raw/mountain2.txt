@@ -5,3 +5,5 @@ You break out of the trees and are caught back up in a whirlwind of snow.  In th
 mountain3%Continue to the mountain
 corpse1%Inspect the corpse
 start%Return to the snowbank
+
+Pine Forest

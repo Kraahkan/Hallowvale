@@ -5,3 +5,5 @@ The forest gets extremely dense. What looks like a very old and decayed tree for
 forest3%Venture deeper
 tree%Climb tree
 forest1%Go back
+
+Pine Forest
