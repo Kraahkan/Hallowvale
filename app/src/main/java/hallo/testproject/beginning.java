@@ -124,7 +124,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         // ----------------------------------------------------
         
-        //rain(22);/
+        //rain(22);
         snow(140);
 
         Gf.updateFlags(); // populates with txt file paths and sets flags all to 0
