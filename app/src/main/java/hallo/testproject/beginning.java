@@ -124,7 +124,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
         // ----------------------------------------------------
         
-        //rain(22);
+        //rain(32);
         snow(140);
 
         Gf.updateFlags(); // populates with txt file paths and sets flags all to 0
@@ -157,7 +157,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     }
 
-    public void forgeClick(View v){
+    public void forgeClick(View v){ // Move to forge
 
         Intent i = new Intent(beginning.this, theforge.class);
         startActivity(i);
@@ -165,7 +165,7 @@ public class beginning extends AppCompatActivity implements OnClickListener { //
 
     }
 
-    public void muteSound(){
+    public void muteSound(){ // Mute sound button
 
         if(!soundCheck) {
             ambiance.pause();
