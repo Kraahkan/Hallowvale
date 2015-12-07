@@ -1,0 +1,7 @@
+The ice is pitch black and gleaming with sorrow. You tremble as you try to stay balanced.
+The ice is pitch black and gleaming with sorrow. You tremble as you try to stay balanced.
+The ice starts to crack beneath your feet.
+
+lake2%Break the ice&pickaxe
+lake3%Cross the lake
+forest3%Go back

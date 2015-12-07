@@ -3,7 +3,7 @@ The ground beneath the snow appears to be solid stone.  Smaller cliffs form the 
 
 
 mountain5%Climb the mountain
-camp%Inspect the camp
+fire%Inspect the camp
 mountain3%Go back
 
 The Mountain

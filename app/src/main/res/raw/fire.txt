@@ -2,5 +2,5 @@ Faint embers burn in a smouldering campfire, and two backpacks lie in disarray i
 Faint embers burn in a smouldering campfire, and two backpacks lie in disarray in the snow.  Provisions lay strewn across the snow, and drops of blood covers the ground.  Scattered footprints lead into a cave entrance.
 
 
-cave%Enter the cave
+space%Enter the cave
 mountain4%Leave the camp
